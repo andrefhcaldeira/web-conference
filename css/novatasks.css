@@ -1,0 +1,46 @@
+body{margin: 0 auto; font-family: Verdana, Geneva, Tahoma, sans-serif;}
+
+.forms{width: 50%; background-color: #CCC; margin: 0 auto; margin-top: 10%; border: 1px solid #333;}
+h1{color:blue; text-align: center;text-transform: uppercase;}
+h2{color:blue; text-align: center;text-transform: uppercase;}
+
+form p{margin:10px 1px}
+form label{ float:left; width:40%; margin-right:5px; text-align:right; color: blue; }
+form input, form textarea{ width: 40%; padding:3px}
+form input[type=submit]{ background-color: blue; color: #FFF; margin-left: 40%; font-size: 1.1em;text-transform: uppercase;}
+
+ul{ list-style-type: none;}
+li{margin:5px; padding:5px; background-color: #CCC;}
+
+
+main{float:left; width: 66%;}
+aside{float:right; width: 33%;}
+
+
+
+
+.left{ float:left; display: inline;position: relative}
+.right{ float:right; position: relative}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.done{text-decoration: line-through;}
+
+@media only screen and (max-width: 800px) {
+    .forms{width: 90%;}
+
+}
+
+
+@media only screen and (max-width: 600px) {
+    .forms{width: 96%;}
+    form label{float:none; width: 98%; margin: 0;}
+    form input, form textarea{width: 98%; }
+    form input[type=submit]{ margin: 0}
+
+    main, aside{float:none; width: 100%;}
+}
