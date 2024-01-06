@@ -11,8 +11,8 @@
 
 <body>
 <nav>
-    <a href="#">
-        <img class="logo" src="#">
+    <a href="./index.php">
+        <img class="logo" src="./images/ExploraSci.png">
     </a>
     <a href="#">Home</a>
     <a href="#">Local</a>
@@ -25,9 +25,6 @@
     </div>
     <a href="#">Login</a>
 </nav>
-<div class="hero">
-
-</div>
 
 <!-- <header>
     <nav class="clearfix">
