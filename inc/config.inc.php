@@ -1,5 +1,5 @@
 <?php
-$db = new mysqli('localhost', 'root', '', 'novatasks') or die("Não ligou");
+$db = new mysqli('localhost', 'root', '', 'conferencedb') or die("Não ligou");
 
 function mypass($pass){
     $salt="sdkgfwgew";
