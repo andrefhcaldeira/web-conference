@@ -15,10 +15,6 @@
 				<input type='password' name='pass' required>
 			</p>
 			<p>
-				<label>Extra Info:</label>
-				<textarea name="extra"></textarea>
-			</p>
-			<p>
 			<input type='submit' value='register'>
 			</p>
 		</form>

@@ -5,9 +5,10 @@
 	$email = $db->real_escape_string($_POST["email"]);
 	$pass = mypass($db->real_escape_string($_POST["pass"]));
 	$extra = $db->real_escape_string($_POST["extra"]);
-	
-	$sql= "insert into users(username, email, password, extra) 
-		values('$user', '$email','$pass', '$extra') ";
+	$type = 'normal';
+
+	$sql= "insert into users(username, email, password, type) 
+		values('$user', '$email','$pass', '$type') ";
 
 	if ($db->query($sql) === TRUE) {
 		header("Location: index.php");   
