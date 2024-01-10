@@ -242,6 +242,57 @@ aside {
     font-size: 1rem;
 }
 
+.tracks {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.track-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.track-right {
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-left: auto;
+}
+
+.track-left {
+    display: flex;
+    flex-flow: column;
+    color: white;
+    margin-right: auto;
+}
+
+.track-number {
+    font-size: 4rem;
+    font-weight: bold;
+    color: orange;
+}
+
+.track-date {
+    color: thistle;
+}
+
+.track-room {
+    font-size: 3rem;
+}
+
+.track-title {
+    font-size: 1.75rem;
+    color: salmon;
+}
+
+.track-description {
+    font-size: 1rem;
+}
+
 
 @media only screen and (max-width: 600px) {
     .forms {
