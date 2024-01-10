@@ -37,7 +37,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ff8c00;/ Orange color on hover /
+    color: #ff8c00;
 }
 
 .logo {
@@ -190,6 +190,56 @@ aside {
         width: 90%;
     }
 
+}
+.tracks {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.track-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%; /* Adjusted width to fill the entire space */
+}
+
+.track-right {
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-left: auto;
+}
+
+.track-left {
+    display: flex;
+    flex-flow: column;
+    color: white;
+    /* Removed margin-right: auto; to prevent pushing to the right */
+}
+.track-number {
+    font-size: 4rem;
+    font-weight: bold;
+    color: orange;
+}
+
+.track-date {
+    color: thistle;
+}
+
+.track-room {
+    font-size: 3rem;
+}
+
+.track-title {
+    font-size: 1.75rem;
+    color: salmon;
+}
+
+.track-description {
+    font-size: 1rem;
 }
 
 
