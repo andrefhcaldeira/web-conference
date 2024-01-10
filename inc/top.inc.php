@@ -19,10 +19,6 @@
     <a href="#">Informations</a>
     <a href="#">Artigos</a>
     <a href="#">Tracks</a>
-    <div class="search-container">
-        <input type="text" placeholder="Search...">
-        <button type="submit">Search</button>
-    </div>
     <a href="#">Login</a>
 </nav>
 

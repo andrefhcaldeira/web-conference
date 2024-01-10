@@ -1,7 +1,29 @@
 body {
     margin: 0 auto;
     font-family: 'Helvetica', Verdana, Geneva, Tahoma, sans-serif;
-    background: #003f5c;
+    background: rgb(0,63,92);
+    background: linear-gradient(45deg, rgba(0,63,92,1) 0%, rgba(3,88,118,1) 80%);
+}
+
+footer {
+}
+
+.footer-info {
+    display: flex;
+    flex-flow: row;
+    background: #444;
+    padding: 2em;
+    color: white;
+    width: 100%;
+}
+
+.copyright {
+    padding: .5em;
+    color: white;
+    background: #2d2d2d;
+    margin: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .forms {
@@ -13,9 +35,12 @@ body {
 }
 
 h2 {
-    color: blue;
-    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
     text-transform: uppercase;
+    margin-left: 2em;
 }
 
 nav {
@@ -195,15 +220,15 @@ aside {
 .tracks {
     display: flex;
     flex-flow: row;
-    justify-content: center;
     align-items: center;
-    width: 100%;
+    margin-inline: 4em;
 }
 
 .track-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .track-right {
@@ -211,6 +236,7 @@ aside {
     color: white;
     align-items: center;
     margin-left: auto;
+    gap: 3em;
 }
 
 .track-left {
@@ -223,26 +249,33 @@ aside {
 .track-number {
     font-size: 4rem;
     font-weight: bold;
-    color: orange;
+    color: #ffa600;
+    margin-right: 15px;
 }
 
 .track-date {
-    color: thistle;
+    color: #bd5192;
 }
 
 .track-room {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .track-title {
     font-size: 1.75rem;
-    color: salmon;
+    color: #ff6461;
 }
 
 .track-description {
     font-size: 1rem;
 }
 
+
+hr {
+    color: #bd5192;
+    width: 90%;
+}
 
 @media only screen and (max-width: 600px) {
     .forms {
