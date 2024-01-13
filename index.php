@@ -11,7 +11,10 @@ include "inc/top.inc.php";
         <div class="hero-content">
             <h1>Web Conference</h1>
             <span class="current-year">2024<span id="year"></span></span>
-            <p class="description">Immerse yourself in a dynamic program featuring expert-led sessions, interactive workshops, and thought-provoking discussions. Explore the latest advancements and contribute to the collective knowledge that propels our understanding of Science.</p>
+            <?php
+// Include the content_fetch.php file
+include("content_fetch.php");
+?>
         </div>
     </div>
     <h2>Tracks</h2>
