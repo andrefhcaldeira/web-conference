@@ -25,7 +25,7 @@ include "inc/top.inc.php";
     .content th, .content td {
         border: 1px solid #ddd;
         padding: 8px;
-        text-align: left;
+        text-align: center;
     }
 
     .content th {
@@ -33,20 +33,18 @@ include "inc/top.inc.php";
         color: white;
     }
     .popup-container {
+            color: black;
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
         }
 
         .popup {
-            background: white;
-            padding: 20px;
             border-radius: 8px;
             width: 300px;
         }
@@ -80,14 +78,11 @@ include "inc/top.inc.php";
                 </thead>
                 <tbody>
                     <?php
-                    // Include the database configuration file
                     include("inc/config.inc.php");
 
-                    // SQL query to retrieve data from the database
                     $sql = "SELECT titulo, autores, descricao FROM artigo";
                     $result = $db->query($sql);
 
-                    // Output data from each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
                                 <td>" . $row["titulo"] . "</td>
@@ -97,7 +92,6 @@ include "inc/top.inc.php";
                                 </tr>";
                       }
   
-                      // Close the database connection
                       $db->close();
                       ?>
                   </tbody>
@@ -108,13 +102,13 @@ include "inc/top.inc.php";
           <div class="popup-container" id="popup-container">
               <div class="popup">
                   <span class="close-btn" onclick="closePopup()">X</span>
-                  <h2>Create/Edit Artigo</h2>
+                  <h3>Edit Artigo</h3>
                   <!-- Include your form here -->
                   <!-- For simplicity, a basic form is shown below -->
                   <form id="artigo-form" method="post" action="do_create_artigo.php">
                       <label for="titulo">Title:</label>
                       <input type="text" id="titulo" name="titulo" required><br>
-  
+                    -
                       <label for="autores">Authors:</label>
                       <input type="text" id="autores" name="autores" required><br>
   
