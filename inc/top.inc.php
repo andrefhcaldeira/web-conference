@@ -11,20 +11,14 @@
 
 <body>
 <nav>
-    <a href="./index.php">
-        <img class="logo" src="./images/ExploraSci.png">
-    </a>
-    <a href="#">Home</a>
-    <a href="#">Local</a>
-    <a href="#">Informations</a>
-    <a href="#">Artigos</a>
-    <a href="#">Tracks</a>
-    <a href="#">Login</a>
+    <div class="nav-container">
+        <a href="./index.php">
+            <img class="logo" src="./images/ExploraSci.png">
+        </a>
+        <a href="location.php">Local</a>
+        <a href="articles.php">Artigos</a>
+        <a href="#">Tracks</a>
+        <a href="login.php">Login</a>
+    </div>
 </nav>
-
-<!-- <header>
-    <nav class="clearfix">
-        <div class="left"></div>
-        <div class="right"><? include "inc/check-user.inc.php"; ?></div>
-    </nav>
-</header> -->
+<? include "inc/check-user.inc.php";?>

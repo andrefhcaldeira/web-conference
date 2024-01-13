@@ -1,11 +1,8 @@
 body {
+    height: 100vh;
     margin: 0 auto;
     font-family: 'Helvetica', Verdana, Geneva, Tahoma, sans-serif;
-    background: rgb(0,63,92);
-    background: linear-gradient(45deg, rgba(0,63,92,1) 0%, rgba(3,88,118,1) 80%);
-}
-
-footer {
+    background: white;
 }
 
 .footer-info {
@@ -14,7 +11,6 @@ footer {
     background: #444;
     padding: 2em;
     color: white;
-    width: 100%;
 }
 
 .copyright {
@@ -22,16 +18,27 @@ footer {
     color: white;
     background: #2d2d2d;
     margin: 0;
-    width: 100%;
     text-align: center;
 }
 
 .forms {
+    text-align: center;
     width: 50%;
-    background-color: #CCC;
-    margin: 0 auto;
-    margin-top: 10%;
-    border: 1px solid #333;
+    background-color: #003f5c;
+    color: white;
+    margin: 10% auto;
+    padding: 2em;
+    border: 5px solid orange;
+}
+
+.form-title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 h2 {
@@ -43,12 +50,12 @@ h2 {
     margin-left: 2em;
 }
 
-nav {
+.nav-container {
     background-color: #003f5c;
     /* Blue color */
     padding-block: 30px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }
@@ -111,12 +118,6 @@ nav a:hover {
 h1 {
     font-size: 3.5rem;
     margin: 0;
-    color: white;
-}
-
-input {
-    padding: 5px;
-    border: none;
 }
 
 .overlay {
@@ -129,142 +130,9 @@ input {
     /* Adjust the alpha value to control the darkness */
 }
 
-button {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #eee;
-}
-
-form p {
-    margin: 10px 1px
-}
-
-form label {
-    float: left;
-    width: 40%;
-    margin-right: 5px;
-    text-align: right;
-    color: blue;
-}
-
-form input,
-form textarea {
-    width: 40%;
-    padding: 3px
-}
-
-form input[type=submit] {
-    background-color: blue;
-    color: #FFF;
-    margin-left: 40%;
-    font-size: 1.1em;
-    text-transform: uppercase;
-}
-
-ul {
-    list-style-type: none;
-}
-
-li {
-    margin: 5px;
-    padding: 5px;
-    background-color: #CCC;
-}
-
-
-main {
-    float: left;
-    width: 66%;
-}
-
-aside {
-    float: right;
-    width: 33%;
-}
-
-
-
-
-.left {
-    float: left;
-    display: inline;
-    position: relative
-}
-
-.right {
-    float: right;
-    position: relative
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.done {
-    text-decoration: line-through;
-}
-
-@media only screen and (max-width: 800px) {
-    .forms {
-        width: 90%;
-    }
-
-}
-.tracks {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.track-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%; /* Adjusted width to fill the entire space */
-}
-
-.track-right {
-    display: flex;
-    color: white;
-    align-items: center;
-    margin-left: auto;
-}
-
-.track-left {
-    display: flex;
-    flex-flow: column;
-    color: white;
-    /* Removed margin-right: auto; to prevent pushing to the right */
-}
-.track-number {
-    font-size: 4rem;
-    font-weight: bold;
-    color: orange;
-}
-
-.track-date {
-    color: thistle;
-}
-
-.track-room {
-    font-size: 3rem;
-}
-
-.track-title {
-    font-size: 1.75rem;
-    color: salmon;
-}
-
-.track-description {
-    font-size: 1rem;
+.blue-gradient {
+    background: rgb(0, 63, 92);
+    background: linear-gradient(45deg, rgba(0, 63, 92, 1) 0%, rgba(3, 88, 118, 1) 80%);
 }
 
 .tracks {
@@ -321,35 +189,144 @@ aside {
     font-size: 1rem;
 }
 
-
 hr {
     color: #bd5192;
     width: 90%;
 }
 
-@media only screen and (max-width: 600px) {
-    .forms {
-        width: 96%;
-    }
+.local-container {
+    display: flex;
+    flex-flow: row;
+    padding-inline: 3em;
+    padding-block: 2em;
+    gap: 2em;
+}
 
-    form label {
-        float: none;
-        width: 98%;
-        margin: 0;
-    }
+.local-title {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
 
-    form input,
-    form textarea {
-        width: 98%;
-    }
+.local-title h1 {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
 
-    form input[type=submit] {
-        margin: 0
-    }
+.local-title img {
+    position: relative;
+    top: -170%;
+}
 
-    main,
-    aside {
-        float: none;
-        width: 100%;
-    }
+.local-container {
+    font-size: 1.5rem;
+}
+
+.address {
+    margin-top: -.5em
+}
+
+.local-img {
+    border: 10px solid orange;
+}
+
+.description {
+    font-size: 1.3rem;
+}
+
+.local-days {
+    color: purple;
+    margin-right: 4em;
+}
+
+.local-container {
+    display: flex;
+    flex-flow: row;
+}
+
+.contacts-phone , .contacts-mail{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: orange;
+}
+
+.local-times {
+    color: purple;
+}
+
+.articles-wrapper {
+    display: flex;
+    flex-flow: row;
+}
+
+.articles {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 2em;
+    gap: 2em;
+    background: white;
+    width: 100%;
+}
+
+.article-container {
+    display: flex;
+    flex-flow: column;
+}
+
+.article-title {
+    color:rgb(0, 63, 92);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.article-title::first-letter {
+    text-transform: capitalize;
+}
+
+.article-author {
+    color:rgb(0, 63, 92);
+    font-size: 1.1rem;
+}
+
+.article-time {
+    color: lightslategray;
+}
+
+.articles-h1 {
+    color: gray;
+    font-size: 2rem;
+}
+
+.filters {
+    display: flex;
+    flex-flow: column;
+    padding: 2em 1em;
+    background: rgb(231, 233, 235);
+    color: gray;
+    width: 20%;
+    max-width: 30%;
+}
+
+.filters-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.article-tracks {
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: .65rem;
+}
+
+.dates-flex {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: .65rem;
 }
