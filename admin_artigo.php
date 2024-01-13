@@ -102,7 +102,7 @@ include "inc/top.inc.php";
                     <?php
                     include("inc/config.inc.php");
 
-                    $sql = "SELECT titulo, autores, descricao FROM artigo";
+                    $sql = "SELECT id, titulo, autores, descricao FROM artigo";
                     $result = $db->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
@@ -110,7 +110,8 @@ include "inc/top.inc.php";
                                 <td>" . $row["titulo"] . "</td>
                                 <td>" . $row["autores"] . "</td>
                                 <td>" . $row["descricao"] . "</td>
-                                <td><button onclick=\"openEditPopup('')\">Edit</button></td>
+                                <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button>
+                                <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
                       }
   
@@ -128,6 +129,7 @@ include "inc/top.inc.php";
                   <!-- Include your form here -->
                   <!-- For simplicity, a basic form is shown below -->
                   <form class="artigo-form" method="post" action="do_create_artigo.php">
+                  <input type="hidden" name="id" id="edit_artigo_id" value="">
                     <div>
                         <label for="titulo">Title:</label>
                         <input class="form-input" type="text" id="titulo" name="titulo" required><br>
@@ -144,22 +146,29 @@ include "inc/top.inc.php";
                   </form>
               </div>
           </div>
-  
-          <!-- Include JavaScript for popup functionality -->
+
           <script>
-              function openPopup() {
-                  document.getElementById("popup-container").style.display = "flex";
-              }
-  
-              function openEditPopup(created) {
-                  // You can modify this function to pre-fill the form with existing data
-                  document.getElementById("popup-container").style.display = "flex";
-              }
-  
-              function closePopup() {
-                  document.getElementById("popup-container").style.display = "none";
-              }
-          </script>
+    function openPopup() {
+        document.getElementById("popup-container").style.display = "flex";
+        // Reset the hidden input value for create
+        document.getElementById("edit_artigo_id").value = "";
+    }
+
+    function openEditPopup(artigoId) {
+        document.getElementById("popup-container").style.display = "flex";
+        // Set the hidden input value for edit
+        document.getElementById("edit_artigo_id").value = artigoId;
+
+        // Add additional code to fetch existing data based on the artigoId
+        // and populate the form fields if needed.
+        // Example: fetchDataAndPopulateForm(artigoId);
+    }
+
+    function closePopup() {
+        document.getElementById("popup-container").style.display = "none";
+    }
+</script>
+
   
       </div>
   
