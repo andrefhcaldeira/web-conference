@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2024 at 05:47 PM
+-- Generation Time: Jan 13, 2024 at 02:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,15 @@ CREATE TABLE `artigo` (
   `autores` varchar(200) NOT NULL,
   `descricao` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artigo`
+--
+
+INSERT INTO `artigo` (`id`, `titulo`, `autores`, `descricao`) VALUES
+(1, 'Cenas Fixes', 'O Rei', 'COOOL STUFF'),
+(2, 'cool', 'coool', ''),
+(3, 'COOLIO', 'COOOLIO2', 'COOOOOEIRRIUI');
 
 -- --------------------------------------------------------
 
@@ -106,8 +115,17 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `type` enum('normal','admin') NOT NULL DEFAULT 'normal'
+  `type` enum('normal','admin','trackadmin') NOT NULL DEFAULT 'normal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`) VALUES
+(3, 'www', '0740d7491669795fa4ee0f6df7c34008', 'cool@gmail.com', ''),
+(4, 'ww', '0740d7491669795fa4ee0f6df7c34008', 'gon@gmail.com', ''),
+(5, '123', '0740d7491669795fa4ee0f6df7c34008', 'teste@gmail.com', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -160,7 +178,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `artigo`
 --
 ALTER TABLE `artigo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `conteudo`
@@ -190,7 +208,7 @@ ALTER TABLE `track`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
