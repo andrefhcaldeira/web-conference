@@ -46,15 +46,37 @@ include "inc/top.inc.php";
 
         .popup {
             border-radius: 8px;
+            position: relative;
             width: 300px;
+            padding: 2em;
+            background: #003f5c;
+            color: white;
         }
 
         .close-btn {
             cursor: pointer;
             position: absolute;
-            top: 10px;
-            right: 10px;
+            right: 30px;
+            font-size: 1.5rem;
         }
+
+    .artigo-form {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    }
+    
+    .form-input {
+        width: 100%;
+        border: 2px solid gray;
+    }
+
+    .submit-btn {
+        width: 50%;
+        margin: 1em auto;
+    }
+
+    
     </style>
 </style>
 
@@ -105,17 +127,20 @@ include "inc/top.inc.php";
                   <h3>Edit Artigo</h3>
                   <!-- Include your form here -->
                   <!-- For simplicity, a basic form is shown below -->
-                  <form id="artigo-form" method="post" action="do_create_artigo.php">
-                      <label for="titulo">Title:</label>
-                      <input type="text" id="titulo" name="titulo" required><br>
-                    -
-                      <label for="autores">Authors:</label>
-                      <input type="text" id="autores" name="autores" required><br>
-  
-                      <label for="descricao">Description:</label>
-                      <textarea id="descricao" name="descricao" required></textarea><br>
-  
-                      <input type="submit" value="Submit">
+                  <form class="artigo-form" method="post" action="do_create_artigo.php">
+                    <div>
+                        <label for="titulo">Title:</label>
+                        <input class="form-input" type="text" id="titulo" name="titulo" required><br>
+                    </div>
+                    <div>
+                        <label for="autores">Authors:</label>
+                        <input class="form-input" type="text" id="autores" name="autores" required><br>
+                    </div>
+                    <div>
+                        <label for="descricao">Description:</label>
+                        <textarea class="form-input" id="descricao" name="descricao" required></textarea><br>
+                    </div>
+                      <input class="submit-btn" type="submit" value="Submit">
                   </form>
               </div>
           </div>
