@@ -21,10 +21,4 @@
         <a href="login.php">Login</a>
     </div>
 </nav>
-
-<!-- <header>
-    <nav class="clearfix">
-        <div class="left"></div>
-        <div class="right"><? include "inc/check-user.inc.php"; ?></div>
-    </nav>
-</header> -->
+<? include "inc/check-user.inc.php";?>
