@@ -6,7 +6,7 @@ include "inc/top.inc.php";
     <div class="filters">
         <span class="filters-title">Filters</span> <br>
         <span class="tracks-title">Tracks:</span>
-        <div class="tracks">
+        <div class="article-tracks">
             <form>
                 <label>
                     <input type="radio" name="tracks" value="1">

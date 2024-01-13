@@ -16,7 +16,7 @@
             <img class="logo" src="./images/ExploraSci.png">
         </a>
         <a href="location.php">Local</a>
-        <a href="#">Artigos</a>
+        <a href="articles.php">Artigos</a>
         <a href="#">Tracks</a>
         <a href="login.php">Login</a>
     </div>
