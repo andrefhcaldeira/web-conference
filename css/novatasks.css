@@ -1,4 +1,5 @@
 body {
+    height: 100vh;
     margin: 0 auto;
     font-family: 'Helvetica', Verdana, Geneva, Tahoma, sans-serif;
     background: white;
@@ -21,11 +22,23 @@ body {
 }
 
 .forms {
+    text-align: center;
     width: 50%;
-    background-color: #CCC;
-    margin: 0 auto;
-    margin-top: 10%;
-    border: 1px solid #333;
+    background-color: #003f5c;
+    color: white;
+    margin: 10% auto;
+    padding: 2em;
+    border: 5px solid orange;
+}
+
+.form-title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 h2 {
@@ -37,12 +50,12 @@ h2 {
     margin-left: 2em;
 }
 
-nav {
+.nav-container {
     background-color: #003f5c;
     /* Blue color */
     padding-block: 30px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }

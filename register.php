@@ -1,6 +1,6 @@
 <?php include ("inc/top.inc.php");?>
 	<div class="forms">
-		<h1>Register</h1>
+		<span class="form-title">Register</span>
 		<form action='do_register.php' method='post'>
 			<p>
 				<label>Email:</label>
@@ -15,7 +15,7 @@
 				<input type='password' name='pass' required>
 			</p>
 			<p>
-			<input type='submit' value='register'>
+			<input type='submit' value='Register'>
 			</p>
 		</form>
 	</div>

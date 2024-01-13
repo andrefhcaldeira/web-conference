@@ -1,6 +1,6 @@
 <?php include ("inc/top.inc.php");?>
 	<div class="forms">
-		<h1>Login</h1>
+		<span class="form-title">Login</span>
 		<form action='home.php' method='post'>
 			<p>
 				<label>Username:</label>
@@ -14,5 +14,8 @@
 			<input type='submit' value='login'>
 			</p>
 		</form>
+		<a href="register.php">
+			<p>Don't have an account?</p>
+		</a>
 	</div>
 <?php include ("inc/bot.inc.php");?>
