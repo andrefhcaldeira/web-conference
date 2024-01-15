@@ -5,15 +5,18 @@ include "inc/top.inc.php";
 
 ?>
 <style>
-     .flex-container {
+         .flex-container {
         display: flex;
     }
+
+    /* Content styles */
     .content {
         flex: 1;
-        max-width: 1200px;
+        max-width: 1200px; /* Set your desired max-width */
         
     }
 
+    /* Table styles */
     .content table {
         width: 100%;
         border-collapse: collapse;
@@ -29,6 +32,49 @@ include "inc/top.inc.php";
         background-color: #555;
         color: white;
     }
+    .popup-container {
+            color: black;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            border-radius: 8px;
+            position: relative;
+            width: 300px;
+            padding: 2em;
+            background: #003f5c;
+            color: white;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            right: 30px;
+            font-size: 1.5rem;
+        }
+
+    .artigo-form {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    }
+    
+    .form-input {
+        width: 100%;
+        border: 2px solid gray;
+    }
+
+    .submit-btn {
+        width: 50%;
+        margin: 1em auto;
+    }
 
 </style>
 <body>
@@ -41,7 +87,7 @@ include "inc/top.inc.php";
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Texto</th>
+                        <th>Text</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -49,14 +95,14 @@ include "inc/top.inc.php";
                     <?php
                     include("inc/config.inc.php");
 
-                    $sql = "SELECT titulo, texto FROM conteudo";
+                    $sql = "SELECT id, titulo, texto FROM conteudo";
                     $result = $db->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
                                 <td>" . $row["titulo"] . "</td>
                                 <td>" . $row["texto"] . "</td>
-                                <td><button onclick=\"openEditPopup('')\">Edit</button></td>
+                                <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button></td>
                                 </tr>";
                       }
                       $db->close();
@@ -65,7 +111,54 @@ include "inc/top.inc.php";
               </table>
           </div>
       </div>
+    <!-- Popup Form for Creating/Edit Artigo -->
+    <div class="popup-container" id="popup-container">
+              <div class="popup">
+                  <span class="close-btn" onclick="closePopup()">X</span>
+                  <h3>Edit Conteudo</h3>
+                  <!-- Include your form here -->
+                  <!-- For simplicity, a basic form is shown below -->
+                  <form class="artigo-form" method="post" action="do_edit_conteudo.php">
+                  <input type="hidden" name="id" id="edit_conteudo_id" value="">
+                    <div>
+                        <label for="Title">Title:</label>
+                        <input class="form-input" type="text" id="Title" name="Title" required><br>
+                    </div>
+                    <div>
+                        <label for="Text">Text:</label>
+                        <textarea class="form-input" id="Text" name="Text" required></textarea><br>
+                    </div>
+                      <input class="submit-btn" type="submit" value="Submit">
+                  </form>
+              </div>
+          </div>
+
+    <script>
+    function openPopup() {
+        document.getElementById("popup-container").style.display = "flex";
+        document.getElementById("edit_conteudo_id").value = "";
+    }
+
+    function openEditPopup(conteudoId) {
+        document.getElementById("popup-container").style.display = "flex";
+        document.getElementById("edit_conteudo_id").value = conteudoId;
+        var inputs = document.getElementsByClassName("form-input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].required = false;
+    }
+    }
+
+    function closePopup() {
+        document.getElementById("popup-container").style.display = "none";
+    }
+
+
+
+</script>
+
   </body>
+
+  
 </html>
 <?php
 
