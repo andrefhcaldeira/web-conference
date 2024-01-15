@@ -119,7 +119,7 @@ function closePopup() {
                     <?php
                     include("inc/config.inc.php");
 
-                   $sql = "SELECT horario.id, artigo.titulo AS artigo_name, track.nome AS track_name, horario.sala, horario.`data`, horario.hora FROM horario
+        $sql = "SELECT horario.id, artigo.titulo AS artigo_name, track.nome AS track_name, horario.sala, horario.`data`, horario.hora FROM horario
         INNER JOIN artigo ON horario.idArtigo = artigo.id
         INNER JOIN track ON horario.idTrack = track.id";
 $result = $db->query($sql);
