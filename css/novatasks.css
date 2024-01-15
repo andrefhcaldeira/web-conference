@@ -337,9 +337,14 @@ hr {
     flex-flow: column;
 }
 
+.art {
+    padding: 2em;
+}
+
 .art-title {
     color: rgb(0, 63, 92);
     font-weight: bold;
+    font-size: 2.5rem;
 }
 
 .art-title::first-letter {
@@ -348,9 +353,53 @@ hr {
 
 .art-author {
     color: rgb(0, 63, 92);
-    font-size: 1.1rem;
+    font-size: 1.7rem;
+}
+
+.art-description {
+    margin-top: 2em;
+    font-size: 1.5rem;
+}
+
+.art-description-text {
+    font-size: 1.25rem;
 }
 
 .art-time {
     color: lightslategray;
+}
+
+.questions {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.questions-h2 {
+    color: rgb(0, 63, 92);
+    text-transform:none;
+    text-align: center;
+    margin: 0;
+}
+
+.question-login {
+    text-align: center;
+}
+
+.question-input {
+    text-align: center;
+    width: 100%;
+    max-width: 550px;
+    margin-bottom: 2em;
+}
+
+.question {
+    background:rgb(0, 63, 92);
+    color: white;
+    text-align: center;
+    padding: 1em;
+    width: 100%;
+    max-width: 550px;
+    margin-bottom: 2em;
 }
