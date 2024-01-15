@@ -1,8 +1,39 @@
 <?php
 include "inc/top.inc.php";
 ?>
-
 <script>
+    // const articlesDatabase = [{
+    //         title: "Article 1",
+    //         content: "Lorem ipsum dolor sit amet..."
+    //     },
+    //     {
+    //         title: "Article 2",
+    //         content: "Consectetur adipiscing elit..."
+    //     },
+
+    // ];
+
+    // function searchArticles() {
+    //     const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    //     const searchResultsContainer = document.getElementById('searchResults');
+    //     searchResultsContainer.innerHTML = ''; 
+
+    //     const matchingArticles = articlesDatabase.filter(article =>
+    //         article.title.toLowerCase().includes(searchInput) ||
+    //         article.content.toLowerCase().includes(searchInput)
+    //     );
+
+    //     if (matchingArticles.length === 0) {
+    //         searchResultsContainer.innerHTML = '<p>No matching articles found.</p>';
+    //     } else {
+    //         matchingArticles.forEach(article => {
+    //             const articleDiv = document.createElement('div');
+    //             articleDiv.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>`;
+    //             searchResultsContainer.appendChild(articleDiv);
+    //         });
+    //     }
+    // }
+
     function setCookieAndRedirect(articleId) {
         document.cookie = "articleId=" + articleId;
         window.location.href = 'article_page.php';
@@ -66,34 +97,53 @@ include "inc/top.inc.php";
     <div class="articles">
         <div>
             <h1 class="articles-h1">Articles</h1>
-            <input type="text" placeholder="Search...">
-            <button type="submit">Search</button>
+            <form method="post">
+                <input id='searchInput' type="text" name="search" placeholder="Search articles...">
+                <button type="submit" name="submit">Search</button>
+            </form>
         </div>
-        <?php
-        // Include the database configuration file
-        include("inc/config.inc.php");
-    
-        // SQL query to retrieve data from the database
-        $sql = "SELECT id, titulo, autores, descricao FROM artigo";
-        $result = $db->query($sql);
-    
-        if ($result->num_rows > 0) {
-            // Output data from each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
+        <div id="searchResults">
+            <?php
+            include("inc/config.inc.php");
+
+            $sql = "SELECT id, titulo, autores, descricao FROM artigo";
+            $result = $db->query($sql);
+            if (isset($_POST["submit"])) {
+                $str = $_POST["search"];
+                $sth = "SELECT titulo, autores, descricao FROM artigo WHERE titulo LIKE '%$str%'";
+                $result = $db->query($sth);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
                         <div class='article-container'>
                             <span class='article-title'>" . $row["titulo"] . "</span>
                             <span class='article-author'>" .  $row["autores"] . "</span>
                         </div>
                       </a>";
+                    }
+                } else {
+                    echo "Does not exist";
+                }
             }
-        
-            // Close the database connection
-            $db->close();
-        } else {
-            echo "<p>No articles found.</p>";
-        }
-        ?>
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
+                        <div class='article-container'>
+                            <span class='article-title'>" . $row["titulo"] . "</span>
+                            <span class='article-author'>" .  $row["autores"] . "</span>
+                        </div>
+                      </a>";
+                }
+
+                // Close the database connection
+                $db->close();
+            } else {
+                echo "<p>No articles found.</p>";
+            }
+            ?>
+        </div>
     </div>
 </div>
 
