@@ -65,10 +65,8 @@ h2 {
 
 .nav-container {
     background-color: #003f5c;
-    /* Blue color */
-    padding-block: 30px;
+    padding: 1em 2em;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }
@@ -210,10 +208,11 @@ hr {
 
 .local-container {
     display: flex;
-    flex-flow: row;
-    padding-inline: 3em;
-    padding-block: 2em;
+    flex-flow: row wrap;
+    padding: 2em;
     gap: 2em;
+    width: 100%;
+    font-size: 1.5rem;
 }
 
 .local-title {
@@ -236,15 +235,13 @@ hr {
     top: -170%;
 }
 
-.local-container {
-    font-size: 1.5rem;
-}
-
 .address {
     margin-top: -.5em
 }
 
 .local-img {
+    width: 50%;
+    height: 50%;
     border: 10px solid orange;
 }
 
@@ -283,7 +280,6 @@ hr {
 .articles {
     display: flex;
     flex-flow: column;
-    justify-content: center;
     padding: 2em;
     gap: 2em;
     background: white;
@@ -315,7 +311,7 @@ hr {
 
 .article-author {
     color: rgb(0, 63, 92);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .article-time {
@@ -431,4 +427,23 @@ hr {
     max-height: 250px;
     margin-bottom: 2em;
     border-radius: 25px;
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .local-container {
+        display: flex;
+        flex-flow: column nowrap;
+        padding: 2em;
+        gap: 2em;
+        width: 100%;
+        font-size: 1.5rem;
+        height: 100%;
+    }
+    
+    .local-title img {
+        position: relative;
+        top: -170%;
+    }
 }

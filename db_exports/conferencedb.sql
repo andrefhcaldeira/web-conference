@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2024 at 02:28 PM
+-- Generation Time: Jan 15, 2024 at 07:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,9 +39,7 @@ CREATE TABLE `artigo` (
 --
 
 INSERT INTO `artigo` (`id`, `titulo`, `autores`, `descricao`) VALUES
-(1, 'Cenas Fixes', 'O Rei', 'COOOL STUFF'),
-(2, 'cool', 'coool', ''),
-(3, 'COOLIO', 'COOOLIO2', 'COOOOOEIRRIUI');
+(22, 'ddd', 'dd', 'rrrrrr');
 
 -- --------------------------------------------------------
 
@@ -60,9 +58,9 @@ CREATE TABLE `conteudo` (
 --
 
 INSERT INTO `conteudo` (`id`, `titulo`, `texto`) VALUES
-(1, 'Home', 'Conteudo da Home'),
-(2, 'Local', 'Conteudo da Pagina Local/venue'),
-(3, 'Outras Informacoes', 'Conteudo da pagina outras informacoes');
+(1, 'Home bio', 'yourself in a dynamic program featuring expert-led sessions, interactive workshops, and thought-provoking discussions. Explore the latest advancements and contribute to the collective knowledge that propels our understanding of Science.'),
+(2, 'Local', 'eerrtrrtt'),
+(3, 'Outras Informacoes', 'rrrrrr');
 
 -- --------------------------------------------------------
 
@@ -78,6 +76,13 @@ CREATE TABLE `horario` (
   `data` date NOT NULL,
   `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `horario`
+--
+
+INSERT INTO `horario` (`id`, `idArtigo`, `idTrack`, `sala`, `data`, `hora`) VALUES
+(1, 22, 1, 'A', '2024-01-01', '16:25:19');
 
 -- --------------------------------------------------------
 
@@ -95,6 +100,18 @@ CREATE TABLE `pergunta` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(20) NOT NULL,
+  `userId` int(20) NOT NULL,
+  `Text` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `track`
 --
 
@@ -103,6 +120,13 @@ CREATE TABLE `track` (
   `nome` varchar(50) NOT NULL,
   `texto` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='tabela serve para listar as tracks e para os conteudos';
+
+--
+-- Dumping data for table `track`
+--
+
+INSERT INTO `track` (`id`, `nome`, `texto`) VALUES
+(1, 'yes', 'yes');
 
 -- --------------------------------------------------------
 
@@ -178,7 +202,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `artigo`
 --
 ALTER TABLE `artigo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `conteudo`
@@ -190,7 +214,7 @@ ALTER TABLE `conteudo`
 -- AUTO_INCREMENT for table `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pergunta`
@@ -202,7 +226,7 @@ ALTER TABLE `pergunta`
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

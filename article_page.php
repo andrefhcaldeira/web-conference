@@ -12,7 +12,9 @@
     $articleId = isset($_COOKIE['articleId']) ? $_COOKIE['articleId'] : null;
 
     // SQL query to retrieve data from the database
-    $sql = "SELECT id, titulo, autores, descricao FROM artigo WHERE id = $articleId";
+    $sql = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.descricao AS artigo_descricao, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
+        INNER JOIN artigo ON horario.idArtigo = artigo.id
+        INNER JOIN track ON horario.idTrack = track.id WHERE horario.id = $articleId";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -20,10 +22,11 @@
         while ($row = $result->fetch_assoc()) {
             echo "
                 <div class='art-container'>
-                    <h1 class='art-title'>" . $row["titulo"] . "</h1>
-                    <span class='art-author'>By " .  $row["autores"] . "</span>
+                    <h1 class='art-title'>" . $row["artigo_name"] . "</h1>
+                    <span class='art-author'>By " .  $row["artigo_autor"] . "</span>
+                    <span class='article-time'>" . $row["data"] . "</span>
                     <span class='art-description'>Description</span>
-                    <p class='art-description-text'>" . $row["descricao"] . "</p>
+                    <p class='art-description-text'>" . $row["artigo_descricao"] . "</p>
                 </div>";
         }
 

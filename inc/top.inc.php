@@ -17,7 +17,6 @@
         </a>
         <a href="location.php">Local</a>
         <a href="articles.php">Artigos</a>
-        <a href="#">Tracks</a>
         <a href="login.php">Login</a>
     </div>
 </nav>

@@ -5,13 +5,11 @@ include "inc/top.inc.php";
 
 ?>
 <main>
-
     <div class="local-title">
         <img src="./images/cities.webp" width="100%">
         <div class="overlay"></div>
         <h1>Location</h1>
     </div>
-    
     <div class="local-container">
         <img class="local-img" src="./images/pexels-photo-2606383.webp" width="600px" height="400px">
         <div class="local-info">

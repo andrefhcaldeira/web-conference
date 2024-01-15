@@ -105,20 +105,25 @@ include "inc/top.inc.php";
             <div id="searchResults">
                 <?php
                 include("inc/config.inc.php");
-
-                $sql = "SELECT id, titulo, autores, descricao FROM artigo";
+                $sql = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
+                INNER JOIN artigo ON horario.idArtigo = artigo.id
+                INNER JOIN track ON horario.idTrack = track.id";
+                // $sql = "SELECT id, titulo, autores, descricao FROM artigo";
                 $result = $db->query($sql);
                 if (isset($_POST["submit"])) {
                     $str = $_POST["search"];
-                    $sth = "SELECT titulo, autores, descricao FROM artigo WHERE titulo LIKE '%$str%'";
+                    $sth = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
+                INNER JOIN artigo ON horario.idArtigo = artigo.id
+                INNER JOIN track ON horario.idTrack = track.id WHERE titulo LIKE '%$str%'";
                     $result = $db->query($sth);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
                             <div class='article-container'>
-                                <span class='article-title'>" . $row["titulo"] . "</span>
-                                <span class='article-author'>" .  $row["autores"] . "</span>
+                                <span class='article-title'>" . $row["artigo_name"] . "</span>
+                                <span class='article-author'>" .  $row["artigo_autor"] . "</span>
+                                <span class='article-time'>" . $row["data"] . "</span>
                             </div>
                           </a>";
                         }
@@ -131,8 +136,9 @@ include "inc/top.inc.php";
                     while ($row = $result->fetch_assoc()) {
                         echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
                             <div class='article-container'>
-                                <span class='article-title'>" . $row["titulo"] . "</span>
-                                <span class='article-author'>" .  $row["autores"] . "</span>
+                                <span class='article-title'>" . $row["artigo_name"] . "</span>
+                                <span class='article-author'>" .  $row["artigo_autor"] . "</span>
+                                <span class='article-time'>" . $row["data"] . "</span>
                             </div>
                           </a>";
                     }
