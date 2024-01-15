@@ -39,113 +39,114 @@ include "inc/top.inc.php";
         window.location.href = 'article_page.php';
     }
 </script>
+<main>
+    <div class="articles-wrapper">
+        <div class="filters">
+            <span class="filters-title">Filters</span> <br>
+            <span class="tracks-title">Tracks:</span>
+            <div class="article-tracks">
+                <form>
+                    <label>
+                        <input type="radio" name="tracks" value="1">
+                        1
+                    </label>
+                    <label>
+                        <input type="radio" name="tracks" value="2">
+                        2
+                    </label>
+                    <label>
+                        <input type="radio" name="tracks" value="3">
+                        3
+                    </label>
+                    <label>
+                        <input type="radio" name="tracks" value="4">
+                        4
+                    </label>
+                    <label>
+                        <input type="radio" name="tracks" value="5">
+                        5
+                    </label>
+                </form>
+            </div>
+            <span class="date-tile">Publication Date:</span>
+            <div class="dates">
+                <form class="dates-flex">
+                    <label>
+                        <input type="radio" name="dates" value="1">
+                        <span>Last Week ()</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="dates" value="2">
+                        <span>Last Month ()</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="dates" value="3">
+                        <span>Last 3 Months ()</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="dates" value="4">
+                        <span>Last 6 Months ()</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="dates" value="5">
+                        <span>Last Year ()</span>
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div class="articles">
+            <div>
+                <h1 class="articles-h1">Articles</h1>
+                <form method="post">
+                    <input id='searchInput' type="text" name="search" placeholder="Search articles...">
+                    <button type="submit" name="submit">Search</button>
+                </form>
+            </div>
+            <div id="searchResults">
+                <?php
+                include("inc/config.inc.php");
 
-<div class="articles-wrapper">
-    <div class="filters">
-        <span class="filters-title">Filters</span> <br>
-        <span class="tracks-title">Tracks:</span>
-        <div class="article-tracks">
-            <form>
-                <label>
-                    <input type="radio" name="tracks" value="1">
-                    1
-                </label>
-                <label>
-                    <input type="radio" name="tracks" value="2">
-                    2
-                </label>
-                <label>
-                    <input type="radio" name="tracks" value="3">
-                    3
-                </label>
-                <label>
-                    <input type="radio" name="tracks" value="4">
-                    4
-                </label>
-                <label>
-                    <input type="radio" name="tracks" value="5">
-                    5
-                </label>
-            </form>
-        </div>
-        <span class="date-tile">Publication Date:</span>
-        <div class="dates">
-            <form class="dates-flex">
-                <label>
-                    <input type="radio" name="dates" value="1">
-                    <span>Last Week ()</span>
-                </label>
-                <label>
-                    <input type="radio" name="dates" value="2">
-                    <span>Last Month ()</span>
-                </label>
-                <label>
-                    <input type="radio" name="dates" value="3">
-                    <span>Last 3 Months ()</span>
-                </label>
-                <label>
-                    <input type="radio" name="dates" value="4">
-                    <span>Last 6 Months ()</span>
-                </label>
-                <label>
-                    <input type="radio" name="dates" value="5">
-                    <span>Last Year ()</span>
-                </label>
-            </form>
-        </div>
-    </div>
-    <div class="articles">
-        <div>
-            <h1 class="articles-h1">Articles</h1>
-            <form method="post">
-                <input id='searchInput' type="text" name="search" placeholder="Search articles...">
-                <button type="submit" name="submit">Search</button>
-            </form>
-        </div>
-        <div id="searchResults">
-            <?php
-            include("inc/config.inc.php");
+                $sql = "SELECT id, titulo, autores, descricao FROM artigo";
+                $result = $db->query($sql);
+                if (isset($_POST["submit"])) {
+                    $str = $_POST["search"];
+                    $sth = "SELECT titulo, autores, descricao FROM artigo WHERE titulo LIKE '%$str%'";
+                    $result = $db->query($sth);
 
-            $sql = "SELECT id, titulo, autores, descricao FROM artigo";
-            $result = $db->query($sql);
-            if (isset($_POST["submit"])) {
-                $str = $_POST["search"];
-                $sth = "SELECT titulo, autores, descricao FROM artigo WHERE titulo LIKE '%$str%'";
-                $result = $db->query($sth);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
+                            <div class='article-container'>
+                                <span class='article-title'>" . $row["titulo"] . "</span>
+                                <span class='article-author'>" .  $row["autores"] . "</span>
+                            </div>
+                          </a>";
+                        }
+                    } else {
+                        echo "Does not exist";
+                    }
+                }
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
-                        <div class='article-container'>
-                            <span class='article-title'>" . $row["titulo"] . "</span>
-                            <span class='article-author'>" .  $row["autores"] . "</span>
-                        </div>
-                      </a>";
+                            <div class='article-container'>
+                                <span class='article-title'>" . $row["titulo"] . "</span>
+                                <span class='article-author'>" .  $row["autores"] . "</span>
+                            </div>
+                          </a>";
                     }
+
+                    // Close the database connection
+                    $db->close();
                 } else {
-                    echo "Does not exist";
+                    echo "<p>No articles found.</p>";
                 }
-            }
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
-                        <div class='article-container'>
-                            <span class='article-title'>" . $row["titulo"] . "</span>
-                            <span class='article-author'>" .  $row["autores"] . "</span>
-                        </div>
-                      </a>";
-                }
-
-                // Close the database connection
-                $db->close();
-            } else {
-                echo "<p>No articles found.</p>";
-            }
-            ?>
+                ?>
+            </div>
         </div>
     </div>
-</div>
+</main>
 
 <?php
 include "inc/bot.inc.php";

@@ -1,4 +1,5 @@
-<?php include ("inc/top.inc.php");?>
+<?php include("inc/top.inc.php"); ?>
+<main>
 	<div class="forms">
 		<span class="form-title">Login</span>
 		<form action='home.php' method='post'>
@@ -11,11 +12,12 @@
 				<input type='password' name='pass'>
 			</p>
 			<p>
-			<input type='submit' value='login'>
+				<input type='submit' value='login'>
 			</p>
 		</form>
 		<a href="register.php">
 			<p>Don't have an account?</p>
 		</a>
 	</div>
-<?php include ("inc/bot.inc.php");?>
+</main>
+<?php include("inc/bot.inc.php"); ?>

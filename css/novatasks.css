@@ -1,8 +1,21 @@
 body {
     height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     font-family: 'Helvetica', Verdana, Geneva, Tahoma, sans-serif;
     background: white;
+    display: flex;
+    flex-flow: column;
+}
+
+main {
+    height: 100%;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-info {
@@ -131,6 +144,7 @@ h1 {
 }
 
 .blue-gradient {
+    height: 100%;
     background: rgb(0, 63, 92);
     background: linear-gradient(45deg, rgba(0, 63, 92, 1) 0%, rgba(3, 88, 118, 1) 80%);
 }
@@ -263,6 +277,7 @@ hr {
 .articles-wrapper {
     display: flex;
     flex-flow: row;
+    height: 100%
 }
 
 .articles {
