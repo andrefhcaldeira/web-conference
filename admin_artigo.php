@@ -9,14 +9,13 @@ include "inc/top.inc.php";
         display: flex;
     }
 
-    /* Content styles */
+
     .content {
         flex: 1;
-        max-width: 1200px; /* Set your desired max-width */
+        max-width: 1200px;
         
     }
 
-    /* Table styles */
     .content table {
         width: 100%;
         border-collapse: collapse;
@@ -84,7 +83,6 @@ include "inc/top.inc.php";
   
 <body>
 <div class="flex-container">
-    <!-- Include the sidebar -->
     <?php
     $currentPage = 'artigos';
     include("inc/admin_sidebar.php"); ?>
@@ -120,14 +118,11 @@ include "inc/top.inc.php";
                   </tbody>
               </table>
           </div>
-  
-          <!-- Popup Form for Creating/Edit Artigo -->
+
           <div class="popup-container" id="popup-container">
               <div class="popup">
                   <span class="close-btn" onclick="closePopup()">X</span>
                   <h3>Edit Artigo</h3>
-                  <!-- Include your form here -->
-                  <!-- For simplicity, a basic form is shown below -->
                   <form class="artigo-form" method="post" action="do_create_artigo.php">
                   <input type="hidden" name="id" id="edit_artigo_id" value="">
                     <div>
@@ -150,13 +145,11 @@ include "inc/top.inc.php";
           <script>
     function openPopup() {
         document.getElementById("popup-container").style.display = "flex";
-        // Reset the hidden input value for create
         document.getElementById("edit_artigo_id").value = "";
     }
 
     function openEditPopup(artigoId) {
         document.getElementById("popup-container").style.display = "flex";
-        // Set the hidden input value for edit
         document.getElementById("edit_artigo_id").value = artigoId;
         var inputs = document.getElementsByClassName("form-input");
     for (var i = 0; i < inputs.length; i++) {
