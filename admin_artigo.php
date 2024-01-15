@@ -158,15 +158,34 @@ include "inc/top.inc.php";
         document.getElementById("popup-container").style.display = "flex";
         // Set the hidden input value for edit
         document.getElementById("edit_artigo_id").value = artigoId;
-
-        // Add additional code to fetch existing data based on the artigoId
-        // and populate the form fields if needed.
-        // Example: fetchDataAndPopulateForm(artigoId);
+        var inputs = document.getElementsByClassName("form-input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].required = false;
+    }
     }
 
     function closePopup() {
         document.getElementById("popup-container").style.display = "none";
     }
+
+    function deleteArtigo(artigoId) {
+        if (confirm("Are you sure you want to delete this article?")) {
+            var form = document.createElement("form");
+            form.method = "post";
+            form.action = "do_delete_artigo.php";
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "id";
+            input.value = artigoId;
+
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+
+            form.submit();
+        }
+    }
+
 </script>
 
   

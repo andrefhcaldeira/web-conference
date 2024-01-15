@@ -8,9 +8,36 @@ if (isset($_POST['id'])) {
     $autores = $_POST['autores'];
     $descricao = $_POST['descricao'];
 
-    // Use prepared statement to prevent SQL injection
-    $stmt = $db->prepare("UPDATE artigo SET titulo=?, autores=?, descricao=? WHERE id=?");
-    $stmt->bind_param("sssi", $titulo, $autores, $descricao, $artigo_id);
+    $sql = "UPDATE artigo SET";
+    $params = array();
+    
+    if ($titulo !== null && $titulo !== "") {
+        $sql .= " titulo=?,";
+        $params[] = $titulo;
+    }
+
+    if ($autores !== null && $autores !== "") {
+        $sql .= " autores=?,";
+        $params[] = $autores;
+    }
+
+    if ($descricao !== null && $descricao !== "")  {
+        $sql .= " descricao=?,";
+        $params[] = $descricao;
+    }
+
+    // Remove the trailing comma from the SQL statement
+    $sql = rtrim($sql, ',');
+
+    $sql .= " WHERE id=?";
+    $params[] = $artigo_id;
+
+    $stmt = $db->prepare($sql);
+
+    // Dynamically bind parameters
+    $param_types = str_repeat('s', count($params) - 1) . 'i'; // 'sss...i' based on the number of parameters
+    $stmt->bind_param($param_types, ...$params);
+
 } else {
     // Creating a new artigo
     $titulo = $_POST['titulo'];
@@ -26,7 +53,7 @@ if (isset($_POST['id'])) {
 if ($stmt->execute()) {
     header("Location: admin_artigo.php");
 } else {
-    echo "Error: " . $stmt->error;
+    print "<br>" . $db->error;
 }
 
 // Close the prepared statement and the database connection
