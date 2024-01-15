@@ -1,8 +1,15 @@
 <?php
 
 include "inc/top.inc.php";
+include("inc/autentica.inc.php");
 
-
+// Check user type for admin pages
+if ($_SESSION['userType'] !== 'admin') {
+    echo "Access denied. You do not have permission to view this page.";
+    // or redirect to an error page
+    // header("Location: error.php");
+    // exit();
+}
 ?>
 
 <script>

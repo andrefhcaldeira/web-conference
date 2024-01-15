@@ -4,8 +4,8 @@ include "inc/top.inc.php";
 include("inc/autentica.inc.php");
 
 // Check user type for admin pages
-if ($_SESSION['userType'] !== 'admin') {
-    echo "Access denied. You do not have permission to view this page.";
+if ($_SESSION['userType'] !== 'admin' && $_SESSION['userType'] !== 'trackadmin') {
+   // echo "Access denied. You do not have permission to view this page.";
     // or redirect to an error page
     // header("Location: error.php");
     // exit();
@@ -68,7 +68,7 @@ if ($_SESSION['userType'] !== 'admin') {
             font-size: 1.5rem;
         }
 
-    .artigo-form {
+    .track-form {
         display: flex;
         flex-flow: column;
         justify-content: center;
@@ -94,32 +94,30 @@ if ($_SESSION['userType'] !== 'admin') {
 <div class="flex-container">
     <!-- Include the sidebar -->
     <?php
-    $currentPage = 'artigos';
+    $currentPage = 'track';
     include("inc/admin_sidebar.php"); ?>
 <div class="content">
             <table>
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Authors</th>
-                        <th>Description</th>
-                        <th> <button onclick="openPopup()">Create Artigo</button></th>
+                        <th>Nome</th>
+                        <th>Texto</th>
+                        <th> <button onclick="openPopup()">Create Track</button></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     include("inc/config.inc.php");
 
-                    $sql = "SELECT id, titulo, autores, descricao FROM artigo";
+                    $sql = "SELECT id, nome, texto FROM track";
                     $result = $db->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
-                                <td>" . $row["titulo"] . "</td>
-                                <td>" . $row["autores"] . "</td>
-                                <td>" . $row["descricao"] . "</td>
+                                <td>" . $row["nome"] . "</td>
+                                <td>" . $row["texto"] . "</td>
                                 <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button>
-                                <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
+                                <button onclick=\"deleteTrack('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
                       }
   
@@ -136,19 +134,15 @@ if ($_SESSION['userType'] !== 'admin') {
                   <h3>Edit Artigo</h3>
                   <!-- Include your form here -->
                   <!-- For simplicity, a basic form is shown below -->
-                  <form class="artigo-form" method="post" action="do_create_artigo.php">
-                  <input type="hidden" name="id" id="edit_artigo_id" value="">
+                  <form class="track-form" method="post" action="do_create_track.php">
+                  <input type="hidden" name="id" id="edit_track_id" value="">
                     <div>
-                        <label for="titulo">Title:</label>
-                        <input class="form-input" type="text" id="titulo" name="titulo" required><br>
+                        <label for="nome">Nome:</label>
+                        <input class="form-input" type="text" id="nome" name="nome" required><br>
                     </div>
                     <div>
-                        <label for="autores">Authors:</label>
-                        <input class="form-input" type="text" id="autores" name="autores" required><br>
-                    </div>
-                    <div>
-                        <label for="descricao">Description:</label>
-                        <textarea class="form-input" id="descricao" name="descricao" required></textarea><br>
+                        <label for="texto">Texto:</label>
+                        <textarea class="form-input" id="texto" name="texto" required></textarea><br>
                     </div>
                       <input class="submit-btn" type="submit" value="Submit">
                   </form>
@@ -158,12 +152,12 @@ if ($_SESSION['userType'] !== 'admin') {
     <script>
     function openPopup() {
         document.getElementById("popup-container").style.display = "flex";
-        document.getElementById("edit_artigo_id").value = "";
+        document.getElementById("edit_track_id").value = "";
     }
 
-    function openEditPopup(artigoId) {
+    function openEditPopup(trackId) {
         document.getElementById("popup-container").style.display = "flex";
-        document.getElementById("edit_artigo_id").value = artigoId;
+        document.getElementById("edit_track_id").value = trackId;
         var inputs = document.getElementsByClassName("form-input");
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].required = false;
@@ -174,11 +168,11 @@ if ($_SESSION['userType'] !== 'admin') {
         document.getElementById("popup-container").style.display = "none";
     }
 
-    function deleteArtigo(artigoId) {
+    function deleteTrack(artigoId) {
         if (confirm("Are you sure you want to delete this article?")) {
             var form = document.createElement("form");
             form.method = "post";
-            form.action = "do_delete_artigo.php";
+            form.action = "do_delete_track.php";
             var input = document.createElement("input");
             input.type = "hidden";
             input.name = "id";

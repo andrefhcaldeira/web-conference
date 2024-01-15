@@ -2,7 +2,7 @@
 <main>
 	<div class="forms">
 		<span class="form-title">Login</span>
-		<form action='home.php' method='post'>
+		<form action='index.php' method='post'>
 			<p>
 				<label>Username:</label>
 				<input type='text' name='user'>
