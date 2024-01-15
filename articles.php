@@ -2,6 +2,13 @@
 include "inc/top.inc.php";
 ?>
 
+<script>
+    function setCookieAndRedirect(articleId) {
+        document.cookie = "articleId=" + articleId;
+        window.location.href = 'article_page.php';
+    }
+</script>
+
 <div class="articles-wrapper">
     <div class="filters">
         <span class="filters-title">Filters</span> <br>
@@ -71,22 +78,20 @@ include "inc/top.inc.php";
         $result = $db->query($sql);
     
         if ($result->num_rows > 0) {
-        // Output data from each row
+            // Output data from each row
             while ($row = $result->fetch_assoc()) {
-                echo "
-                    <a href='article_page.php' id='articleAnchor' onclick='document.cookie = articleId=" . $row["id"] . "; setArticleId(articleId);'>
+                echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
                         <div class='article-container'>
                             <span class='article-title'>" . $row["titulo"] . "</span>
                             <span class='article-author'>" .  $row["autores"] . "</span>
-                            <span class='article-time'>" . '19:00h Monday ' . $row["time"] . "</span>
                         </div>
-                    </a>";
-                }
-    
-                // Close the database connection
-                $db->close();
+                      </a>";
+            }
+        
+            // Close the database connection
+            $db->close();
         } else {
-            echo "<tr><td colspan='4'>No results found</td></tr>";
+            echo "<p>No articles found.</p>";
         }
         ?>
     </div>

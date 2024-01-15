@@ -1,8 +1,8 @@
 <?php
 include("inc/config.inc.php");
 
-
-if (isset($_POST['id'])) {
+// Check if the artigo ID is present in the request
+if (!empty($_POST['id'])) {
     $artigo_id = $_POST['id'];
     $titulo = $_POST['titulo'];
     $autores = $_POST['autores'];
