@@ -102,7 +102,7 @@ include "inc/top.inc.php";
                     <?php
                     include("inc/config.inc.php");
 
-                    $sql = "SELECT titulo, autores, descricao FROM artigo";
+                    $sql = "SELECT id, titulo, autores, descricao FROM artigo";
                     $result = $db->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
@@ -110,8 +110,10 @@ include "inc/top.inc.php";
                                 <td>" . $row["titulo"] . "</td>
                                 <td>" . $row["autores"] . "</td>
                                 <td>" . $row["descricao"] . "</td>
-                                <td><button onclick=\"openEditPopup('')\">Edit</button></td>
+                                <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button>
+                                <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
+<<<<<<< HEAD
                     }
 
                     $db->close();
@@ -125,6 +127,25 @@ include "inc/top.inc.php";
                 <span class="close-btn" onclick="closePopup()">X</span>
                 <h3>Edit Artigo</h3>
                 <form class="artigo-form" method="post" action="do_create_artigo.php">
+=======
+                      }
+  
+                      $db->close();
+                      ?>
+                  </tbody>
+              </table>
+          </div>
+  
+          <!-- Popup Form for Creating/Edit Artigo -->
+          <div class="popup-container" id="popup-container">
+              <div class="popup">
+                  <span class="close-btn" onclick="closePopup()">X</span>
+                  <h3>Edit Artigo</h3>
+                  <!-- Include your form here -->
+                  <!-- For simplicity, a basic form is shown below -->
+                  <form class="artigo-form" method="post" action="do_create_artigo.php">
+                  <input type="hidden" name="id" id="edit_artigo_id" value="">
+>>>>>>> e5d3f91664b5764f3a8495823c9c0964cbce1712
                     <div>
                         <label for="titulo">Title:</label>
                         <input class="form-input" type="text" id="titulo" name="titulo" required><br>
@@ -137,6 +158,7 @@ include "inc/top.inc.php";
                         <label for="descricao">Description:</label>
                         <textarea class="form-input" id="descricao" name="descricao" required></textarea><br>
                     </div>
+<<<<<<< HEAD
                     <input class="submit-btn" type="submit" value="Submit">
                 </form>
             </div>
@@ -163,6 +185,40 @@ include "inc/top.inc.php";
 </body>
 
 </html>
+=======
+                      <input class="submit-btn" type="submit" value="Submit">
+                  </form>
+              </div>
+          </div>
+
+          <script>
+    function openPopup() {
+        document.getElementById("popup-container").style.display = "flex";
+        // Reset the hidden input value for create
+        document.getElementById("edit_artigo_id").value = "";
+    }
+
+    function openEditPopup(artigoId) {
+        document.getElementById("popup-container").style.display = "flex";
+        // Set the hidden input value for edit
+        document.getElementById("edit_artigo_id").value = artigoId;
+
+        // Add additional code to fetch existing data based on the artigoId
+        // and populate the form fields if needed.
+        // Example: fetchDataAndPopulateForm(artigoId);
+    }
+
+    function closePopup() {
+        document.getElementById("popup-container").style.display = "none";
+    }
+</script>
+
+  
+      </div>
+  
+  </body>
+  </html>
+>>>>>>> e5d3f91664b5764f3a8495823c9c0964cbce1712
 <?php
 
 include "inc/bot.inc.php";
