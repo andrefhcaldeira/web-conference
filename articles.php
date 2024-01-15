@@ -67,18 +67,20 @@ include "inc/top.inc.php";
         include("inc/config.inc.php");
     
         // SQL query to retrieve data from the database
-        $sql = "SELECT titulo, autores, descricao FROM artigo";
+        $sql = "SELECT id, titulo, autores, descricao FROM artigo";
         $result = $db->query($sql);
     
         if ($result->num_rows > 0) {
         // Output data from each row
             while ($row = $result->fetch_assoc()) {
-                echo "<div class='article-container'>
-                        <span class='article-title'>" . $row["titulo"] . "</span>
-                        <span class='article-author'>" .  $row["autores"] . "</span>
-                        <span class='article-time'>" . '19:00h Monday ' . $row["time"] . "</span>
-                        <span class='article-description'>" . $row["descricao"] . "</span>
-                    </div>";
+                echo "
+                    <a href='article_page.php' id='articleAnchor' onclick='document.cookie = articleId=" . $row["id"] . "; setArticleId(articleId);'>
+                        <div class='article-container'>
+                            <span class='article-title'>" . $row["titulo"] . "</span>
+                            <span class='article-author'>" .  $row["autores"] . "</span>
+                            <span class='article-time'>" . '19:00h Monday ' . $row["time"] . "</span>
+                        </div>
+                    </a>";
                 }
     
                 // Close the database connection

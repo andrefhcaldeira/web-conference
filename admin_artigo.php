@@ -5,14 +5,14 @@ include "inc/top.inc.php";
 ?>
 
 <style>
-       .flex-container {
+    .flex-container {
         display: flex;
     }
 
 
     .content {
         flex: 1;
-        max-width: 1200px;
+        max-width: 1200px; 
         
     }
 
@@ -21,7 +21,8 @@ include "inc/top.inc.php";
         border-collapse: collapse;
     }
 
-    .content th, .content td {
+    .content th,
+    .content td {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: center;
@@ -31,40 +32,41 @@ include "inc/top.inc.php";
         background-color: #555;
         color: white;
     }
+
     .popup-container {
-            color: black;
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-        }
+        color: black;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .popup {
-            border-radius: 8px;
-            position: relative;
-            width: 300px;
-            padding: 2em;
-            background: #003f5c;
-            color: white;
-        }
+    .popup {
+        border-radius: 8px;
+        position: relative;
+        width: 300px;
+        padding: 2em;
+        background: #003f5c;
+        color: white;
+    }
 
-        .close-btn {
-            cursor: pointer;
-            position: absolute;
-            right: 30px;
-            font-size: 1.5rem;
-        }
+    .close-btn {
+        cursor: pointer;
+        position: absolute;
+        right: 30px;
+        font-size: 1.5rem;
+    }
 
     .artigo-form {
         display: flex;
         flex-flow: column;
         justify-content: center;
     }
-    
+
     .form-input {
         width: 100%;
         border: 2px solid gray;
@@ -74,13 +76,11 @@ include "inc/top.inc.php";
         width: 50%;
         margin: 1em auto;
     }
-
-    
-    </style>
+</style>
 </style>
 
 <head>
-  
+
 <body>
 <div class="flex-container">
     <?php
@@ -111,6 +111,21 @@ include "inc/top.inc.php";
                                 <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button>
                                 <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
+<<<<<<< HEAD
+                    }
+
+                    $db->close();
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="popup-container" id="popup-container">
+            <div class="popup">
+                <span class="close-btn" onclick="closePopup()">X</span>
+                <h3>Edit Artigo</h3>
+                <form class="artigo-form" method="post" action="do_create_artigo.php">
+=======
                       }
   
                       $db->close();
@@ -125,6 +140,7 @@ include "inc/top.inc.php";
                   <h3>Edit Artigo</h3>
                   <form class="artigo-form" method="post" action="do_create_artigo.php">
                   <input type="hidden" name="id" id="edit_artigo_id" value="">
+>>>>>>> e5d3f91664b5764f3a8495823c9c0964cbce1712
                     <div>
                         <label for="titulo">Title:</label>
                         <input class="form-input" type="text" id="titulo" name="titulo" required><br>
@@ -137,6 +153,34 @@ include "inc/top.inc.php";
                         <label for="descricao">Description:</label>
                         <textarea class="form-input" id="descricao" name="descricao" required></textarea><br>
                     </div>
+<<<<<<< HEAD
+                    <input class="submit-btn" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+        <!-- Include JavaScript for popup functionality -->
+        <script>
+            function openPopup() {
+                document.getElementById("popup-container").style.display = "flex";
+            }
+
+            function openEditPopup(created) {
+                // You can modify this function to pre-fill the form with existing data
+                document.getElementById("popup-container").style.display = "flex";
+            }
+
+            function closePopup() {
+                document.getElementById("popup-container").style.display = "none";
+            }
+        </script>
+
+    </div>
+
+</body>
+
+</html>
+=======
                       <input class="submit-btn" type="submit" value="Submit">
                   </form>
               </div>
@@ -186,6 +230,7 @@ include "inc/top.inc.php";
   
   </body>
   </html>
+>>>>>>> e5d3f91664b5764f3a8495823c9c0964cbce1712
 <?php
 
 include "inc/bot.inc.php";

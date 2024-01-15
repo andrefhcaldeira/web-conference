@@ -248,7 +248,8 @@ hr {
     flex-flow: row;
 }
 
-.contacts-phone , .contacts-mail{
+.contacts-phone,
+.contacts-mail {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -280,7 +281,7 @@ hr {
 }
 
 .article-title {
-    color:rgb(0, 63, 92);
+    color: rgb(0, 63, 92);
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -290,7 +291,7 @@ hr {
 }
 
 .article-author {
-    color:rgb(0, 63, 92);
+    color: rgb(0, 63, 92);
     font-size: 1.1rem;
 }
 
@@ -329,4 +330,27 @@ hr {
     display: flex;
     flex-flow: column nowrap;
     font-size: .65rem;
+}
+
+.art-container {
+    display: flex;
+    flex-flow: column;
+}
+
+.art-title {
+    color: rgb(0, 63, 92);
+    font-weight: bold;
+}
+
+.art-title::first-letter {
+    text-transform: capitalize;
+}
+
+.art-author {
+    color: rgb(0, 63, 92);
+    font-size: 1.1rem;
+}
+
+.art-time {
+    color: lightslategray;
 }
