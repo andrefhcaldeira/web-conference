@@ -1,6 +1,7 @@
 <?php
-include "inc/top.inc.php";
 include ("inc/autentica.inc.php");
+include "inc/top.inc.php";
+
 ?>
 <main>
     <div class="blue-gradient">

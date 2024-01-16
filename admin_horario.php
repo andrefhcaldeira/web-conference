@@ -3,12 +3,35 @@
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
 
-// Check user type for admin pages
 if ($_SESSION['userType'] !== 'admin') {
-    echo "Access denied. You do not have permission to view this page.";
-    // or redirect to an error page
-    // header("Location: error.php");
-    // exit();
+    header("Location: home.php");
+}
+$artigoOptions = '';
+
+$artigoQuery = "SELECT id, titulo FROM artigo";
+$artigoResult = $db->query($artigoQuery);
+
+if ($artigoResult) {
+    while ($artigoRow = $artigoResult->fetch_assoc()) {
+        $artigoOptions .= "<option value='" . $artigoRow["id"] . "'>" . $artigoRow["titulo"] . "</option>";
+    }
+} else {
+    // Handle query error (optional)
+    die("Artigo Query Error: " . mysqli_error($db));
+}
+
+$trackOptions = '';
+
+$trackQuery = "SELECT id, nome FROM track";
+$trackResult = $db->query($trackQuery);
+
+if ($trackResult) {
+    while ($trackRow = $trackResult->fetch_assoc()) {
+        $trackOptions .= "<option value='" . $trackRow["id"] . "'>" . $trackRow["nome"] . "</option>";
+    }
+} else {
+    // Handle query error (optional)
+    die("Track Query Error: " . mysqli_error($db));
 }
 ?>
 
@@ -100,7 +123,7 @@ if ($_SESSION['userType'] !== 'admin') {
                         <th>Sala</th>
                         <th>Data</th>
                         <th>Hora</th>
-                        <th> <button onclick="openPopup()">Create Artigo</button></th>
+                        <th><button onclick="openPopup()">Create horario</button></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,17 +133,19 @@ if ($_SESSION['userType'] !== 'admin') {
         $sql = "SELECT horario.id, artigo.titulo AS artigo_name, track.nome AS track_name, horario.sala, horario.`data`, horario.hora FROM horario
         INNER JOIN artigo ON horario.idArtigo = artigo.id
         INNER JOIN track ON horario.idTrack = track.id";
-$result = $db->query($sql);
+        $result = $db->query($sql);
 
-while ($row = $result->fetch_assoc()) {
-    echo "<tr>
-            <td>" . $row["artigo_name"] . "</td>
-            <td>" . $row["track_name"] . "</td>
-            <td>" . $row["sala"] . "</td> 
-            <td>" . $row["data"] . "</td>
-            <td>" . $row["hora"] . "</td>
-            <td><button onclick=\"openEditPopups('".$row["id"]."')\">Edit</button></td>
-            </tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td>" . $row["artigo_name"] . "</td>
+                    <td>" . $row["track_name"] . "</td>
+                    <td>" . $row["sala"] . "</td> 
+                    <td>" . $row["data"] . "</td>
+                    <td>" . $row["hora"] . "</td>
+                    <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button>
+                    <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td></td>
+                    
+                    </tr>";
 }
                       $db->close();
                       ?>
@@ -133,41 +158,31 @@ while ($row = $result->fetch_assoc()) {
     <div class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
         <h3>Edit Conteudo</h3>
-        <form class="artigo-form" method="post" action="do_edit_conteudo.php">
-            <input type="hidden" name="id" id="edit_conteudo_id" value="">
-            <div>
-                <label for="Title">Title:</label>
-                <input class="form-input" type="text" id="Title" name="Title" required>
-            </div>
-            <div>
-                <label for="Text">Text:</label>
-                <textarea class="form-input" id="Text" name="Text" required></textarea>
-            </div>
+        <form class="artigo-form" method="post" action="do_create_horario.php">
+            <input type="hidden" name="id" id="edit_horario_id" value="">
             <div>
                 <label for="idArtigo">Artigo:</label>
-                <select class="form-input" id="idArtigo" name="idArtigo" required>
-                    <?php
-                    $artigoQuery = "SELECT id, titulo FROM artigo";
-                    $artigoResult = $db->query($artigoQuery);
-
-                    while ($artigoRow = $artigoResult->fetch_assoc()) {
-                        echo "<option value='" . $artigoRow["id"] . "'>" . $artigoRow["titulo"] . "</option>";
-                    }
-                    ?>
+                <select name="idArtigo" id="idArtigo" required>
+                    <?php echo $artigoOptions; ?>
                 </select>
             </div>
             <div>
                 <label for="idTrack">Track:</label>
-                <select class="form-input" id="idTrack" name="idTrack" required>
-                    <?php
-                    $trackQuery = "SELECT id, nome FROM track";
-                    $trackResult = $db->query($trackQuery);
-
-                    while ($trackRow = $trackResult->fetch_assoc()) {
-                        echo "<option value='" . $trackRow["id"] . "'>" . $trackRow["nome"] . "</option>";
-                    }
-                    ?>
+                <select name="idTrack" id="idTrack" required>
+                    <?php echo $trackOptions; ?>
                 </select>
+            </div>
+            <div>
+                <label for="Sala">Sala:</label>
+                <input class="form-input" type="text" id="Sala" name="Sala" required>
+            </div>
+            <div>
+                <label for="Data">Data:</label>
+                <input class="form-input" type="date" id="Data" name="Data" required>
+            </div>
+            <div>
+                <label for="Hour">Hour:</label>
+                <input class="form-input" type="time" id="Hora" name="Hora" required>
             </div>
             <input class="submit-btn" type="submit" value="Submit">
         </form>
@@ -179,25 +194,42 @@ while ($row = $result->fetch_assoc()) {
   </body>
 
   <script>
-       window.onload = function() {
-        function openPopup() {
-    document.getElementById("popup-container").style.display = "flex";
-    document.getElementById("edit_conteudo_id").value = "";
-}
-
-function openEditPopups(conteudoId) {
-    document.getElementById("popup-container").style.display = "flex";
-    document.getElementById("edit_conteudo_id").value = conteudoId;
-    var inputs = document.getElementsByClassName("form-input");
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].removeAttribute("required"); 
+    function openPopup() {
+        document.getElementById("popup-container").style.display = "flex";
+        document.getElementById("edit_horario_id").value = "";
     }
-}
 
-function closePopup() {
-    document.getElementById("popup-container").style.display = "none";
-}
-    };
+    function openEditPopup(horarioid) {
+        document.getElementById("popup-container").style.display = "flex";
+        document.getElementById("edit_horario_id").value = horarioid;
+        var inputs = document.getElementsByClassName("form-input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].required = false;
+    }
+    }
+
+    function closePopup() {
+        document.getElementById("popup-container").style.display = "none";
+    }
+
+    function deleteArtigo(horarioid) {
+        if (confirm("Are you sure you want to delete this article?")) {
+            var form = document.createElement("form");
+            form.method = "post";
+            form.action = "do_delete_horario.php";
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "id";
+            input.value = horarioid;
+
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+
+            form.submit();
+        }
+    }
+
 
 </script>
   

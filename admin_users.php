@@ -3,27 +3,34 @@
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
 
-// Check user type for admin pages
 if ($_SESSION['userType'] !== 'admin') {
-    echo "Access denied. You do not have permission to view this page.";
     header("Location: home.php");
-    // exit();
 }
 ?>
+<?php
+$userTypeOptions = ''; 
 
+$userTypeQuery = "SELECT DISTINCT type FROM users";
+$userTypeResult = $db->query($userTypeQuery);
+
+if ($userTypeResult) {
+    while ($userTypeRow = $userTypeResult->fetch_assoc()) {
+        $userTypeOptions .= "<option value='" . $userTypeRow["type"] . "'>" . $userTypeRow["type"] . "</option>";
+    }
+} else {
+    die("SQL Error: " . mysqli_error($db));
+}
+?>
 <style>
        .flex-container {
         display: flex;
     }
-
-    /* Content styles */
     .content {
         flex: 1;
-        max-width: 1200px; /* Set your desired max-width */
+        max-width: 1200px;
         
     }
 
-    /* Table styles */
     .content table {
         width: 100%;
         border-collapse: collapse;
@@ -90,7 +97,6 @@ if ($_SESSION['userType'] !== 'admin') {
  
 <body>
 <div class="flex-container">
-    <!-- Include the sidebar -->
     <?php
     $currentPage = 'users';
     include("inc/admin_sidebar.php"); ?>
@@ -124,26 +130,19 @@ if ($_SESSION['userType'] !== 'admin') {
                   </tbody>
               </table>
           </div>
-  
-          <!-- Popup Form for Creating/Edit Artigo -->
+
           <div class="popup-container" id="popup-container">
               <div class="popup">
                   <span class="close-btn" onclick="closePopup()">X</span>
                   <h3>Edit Artigo</h3>
-                  <!-- Include your form here -->
-                  <!-- For simplicity, a basic form is shown below -->
                   <form class="artigo-form" method="post" action="do_edit_users.php">
                   <input type="hidden" name="id" id="edit_artigo_id" value="">
-                  <select name="userType">
-                  <?php
-                    $userTypeQuery = "SELECT DISTINCT type FROM users";
-                    $userTypeResult = $db->query($userTypeQuery);
-
-                    while ($userTypeRow = $userTypeResult->fetch_assoc()) {
-                        echo "<option value='" . $userTypeRow["type"] . "'>" . $userTypeRow["type"] . "</option>";
-                    }
-                    ?>
-</select>
+                  <div>
+                <label for="userType">User Type:</label>
+                <select name="userType" id="userType" required>
+                    <?php echo $userTypeOptions; ?>
+                </select>
+            </div>
                       <input class="submit-btn" type="submit" value="Submit">
                   </form>
               </div>
@@ -186,7 +185,6 @@ if ($_SESSION['userType'] !== 'admin') {
             form.submit();
         }
     }
-
 </script>
 
   </body>

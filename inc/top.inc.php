@@ -1,4 +1,6 @@
-<?php if (session_id() == "") session_start(); ?>
+<?php
+ if (session_id() == "") session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,17 +21,28 @@
             <a href="location.php">Local</a>
             <a href="articles.php">Artigos</a>
             <?php
-            switch ($_SESSION['userType']) {
-                case 'admin':
-                    echo "<a href='admin_geral.php'>Admin</a>";
-                case 'normal':
-                    echo "<a href='index.php?logout=1'>Logout</a>";
-                    break;
-                default:
-                    echo "
-                        <a href='login.php'>Login</a>
-                    ";
-            }
-            ?>
+if (isset($_SESSION['userType'])) {
+    switch ($_SESSION['userType']) {
+        case 'admin':
+            echo "<a href='admin_geral.php'>Admin</a>";
+            echo "<a href='index.php?logout=1'>Logout</a>";
+            break;
+
+         case 'admintrack':
+            echo "<a href='admin_track.php'>Admin</a>";
+            echo "<a href='index.php?logout=1'>Logout</a>";
+             break;
+        case 'normal':
+            echo "<a href='index.php?logout=1'>Logout</a>";
+            break;
+        default:
+            echo "<a href='login.php'>Login</a>";
+            break;
+    }
+} else {
+    echo "<a href='login.php'>Login</a>";
+}
+?>
+
         </div>
     </nav>
