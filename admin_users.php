@@ -6,8 +6,7 @@ include("inc/autentica.inc.php");
 // Check user type for admin pages
 if ($_SESSION['userType'] !== 'admin') {
     echo "Access denied. You do not have permission to view this page.";
-    // or redirect to an error page
-    // header("Location: error.php");
+    header("Location: home.php");
     // exit();
 }
 ?>
@@ -136,21 +135,22 @@ if ($_SESSION['userType'] !== 'admin') {
                   <form class="artigo-form" method="post" action="do_edit_users.php">
                   <input type="hidden" name="id" id="edit_artigo_id" value="">
                   <select name="userType">
-                    <?php
+                  <?php
                     $userTypeQuery = "SELECT DISTINCT type FROM users";
                     $userTypeResult = $db->query($userTypeQuery);
 
                     while ($userTypeRow = $userTypeResult->fetch_assoc()) {
-                 echo "<option value='" . $userTypeRow["type"] . "'>" . $userTypeRow["type"] . "</option>";
+                        echo "<option value='" . $userTypeRow["type"] . "'>" . $userTypeRow["type"] . "</option>";
                     }
-                ?>
+                    ?>
 </select>
                       <input class="submit-btn" type="submit" value="Submit">
                   </form>
               </div>
           </div>
-
-    <script>
+      </div>
+  
+      <script>
     function openPopup() {
         document.getElementById("popup-container").style.display = "flex";
         document.getElementById("edit_artigo_id").value = "";
@@ -189,9 +189,6 @@ if ($_SESSION['userType'] !== 'admin') {
 
 </script>
 
-  
-      </div>
-  
   </body>
   </html>
 <?php

@@ -12,25 +12,6 @@ if ($_SESSION['userType'] !== 'admin') {
 }
 ?>
 
-<script>
-function openPopup() {
-    document.getElementById("popup-container").style.display = "flex";
-    document.getElementById("edit_conteudo_id").value = "";
-}
-
-function openEditPopups(conteudoId) {
-    document.getElementById("popup-container").style.display = "flex";
-    document.getElementById("edit_conteudo_id").value = conteudoId;
-    var inputs = document.getElementsByClassName("form-input");
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].removeAttribute("required"); 
-    }
-}
-
-function closePopup() {
-    document.getElementById("popup-container").style.display = "none";
-}
-</script>
 
 <style>
          .flex-container {
@@ -197,6 +178,28 @@ while ($row = $result->fetch_assoc()) {
 
   </body>
 
+  <script>
+       window.onload = function() {
+        function openPopup() {
+    document.getElementById("popup-container").style.display = "flex";
+    document.getElementById("edit_conteudo_id").value = "";
+}
+
+function openEditPopups(conteudoId) {
+    document.getElementById("popup-container").style.display = "flex";
+    document.getElementById("edit_conteudo_id").value = conteudoId;
+    var inputs = document.getElementsByClassName("form-input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].removeAttribute("required"); 
+    }
+}
+
+function closePopup() {
+    document.getElementById("popup-container").style.display = "none";
+}
+    };
+
+</script>
   
 </html>
 <?php
