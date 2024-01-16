@@ -1,8 +1,15 @@
 <?php
 
 include "inc/top.inc.php";
+include("inc/autentica.inc.php");
 
-
+// Check user type for admin pages
+if ($_SESSION['userType'] !== 'admin') {
+    echo "Access denied. You do not have permission to view this page.";
+    // or redirect to an error page
+    // header("Location: error.php");
+    // exit();
+}
 ?>
 
 <script>
@@ -119,7 +126,7 @@ function closePopup() {
                     <?php
                     include("inc/config.inc.php");
 
-                   $sql = "SELECT horario.id, artigo.titulo AS artigo_name, track.nome AS track_name, horario.sala, horario.`data`, horario.hora FROM horario
+        $sql = "SELECT horario.id, artigo.titulo AS artigo_name, track.nome AS track_name, horario.sala, horario.`data`, horario.hora FROM horario
         INNER JOIN artigo ON horario.idArtigo = artigo.id
         INNER JOIN track ON horario.idTrack = track.id";
 $result = $db->query($sql);

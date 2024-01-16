@@ -1,3 +1,6 @@
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,11 +43,21 @@
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-    <button class="<?php echo ($currentPage == 'artigos') ? 'active' : ''; ?>" onclick="window.location.href='admin_artigo.php';">Artigos</button>
-    <button class="<?php echo ($currentPage == 'geral') ? 'active' : ''; ?>" onclick="window.location.href='admin_geral.php';">Info Geral</button>
-    <button class="<?php echo ($currentPage == 'horario') ? 'active' : ''; ?>" onclick="window.location.href='admin_horario.php';">Horário</button>
+<div class="sidebar">
+
+
+    <?php if ($_SESSION['userType'] == 'admin') { ?>
+        <button class="<?php echo ($currentPage == 'users') ? 'active' : ''; ?>" onclick="window.location.href='admin_users.php';">Users</button>
+        <button class="<?php echo ($currentPage == 'artigos') ? 'active' : ''; ?>" onclick="window.location.href='admin_artigo.php';">Artigos</button>
+        <button class="<?php echo ($currentPage == 'geral') ? 'active' : ''; ?>" onclick="window.location.href='admin_geral.php';">Info Geral</button>
+        <button class="<?php echo ($currentPage == 'horario') ? 'active' : ''; ?>" onclick="window.location.href='admin_horario.php';">Horário</button>
+    <?php } ?>
+
+    <?php if ($_SESSION['userType'] == 'admin' || $_SESSION['userType'] == 'trackadmin') { ?>
+        <button class="<?php echo ($currentPage == 'track') ? 'active' : ''; ?>" onclick="window.location.href='admin_track.php';">Tracks</button>
+    <?php } ?>
 </div>
+
 
 
 </body>

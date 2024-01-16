@@ -1,5 +1,11 @@
 <?php
 include "inc/top.inc.php";
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
 ?>
 <script>
     // const articlesDatabase = [{

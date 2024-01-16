@@ -1,5 +1,6 @@
 <?php
 include "inc/top.inc.php";
+include ("inc/autentica.inc.php");
 ?>
 <main>
     <div class="blue-gradient">
@@ -10,7 +11,6 @@ include "inc/top.inc.php";
                 <h1>Web Conference</h1> 
                 <span class="current-year">2024</span>
                 <?php 
-                // Include the content_fetch.php file 
                     include("content_fetch.php"); 
                 ?> 
             </div> 

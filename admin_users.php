@@ -88,36 +88,33 @@ if ($_SESSION['userType'] !== 'admin') {
     </style>
 
 
-<head>
-  
+ 
 <body>
 <div class="flex-container">
     <!-- Include the sidebar -->
     <?php
-    $currentPage = 'artigos';
+    $currentPage = 'users';
     include("inc/admin_sidebar.php"); ?>
 <div class="content">
             <table>
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Authors</th>
-                        <th>Description</th>
-                        <th> <button onclick="openPopup()">Create Artigo</button></th>
+                        <th>User Name</th>
+                        <th>User Type</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     include("inc/config.inc.php");
 
-                    $sql = "SELECT id, titulo, autores, descricao FROM artigo";
+                    $sql = "SELECT id, username, `type` FROM users";
                     $result = $db->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
-                                <td>" . $row["titulo"] . "</td>
-                                <td>" . $row["autores"] . "</td>
-                                <td>" . $row["descricao"] . "</td>
+                                <td>" . $row["username"] . "</td>
+                                <td>" . $row["type"] . "</td>
                                 <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button>
                                 <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
@@ -136,20 +133,18 @@ if ($_SESSION['userType'] !== 'admin') {
                   <h3>Edit Artigo</h3>
                   <!-- Include your form here -->
                   <!-- For simplicity, a basic form is shown below -->
-                  <form class="artigo-form" method="post" action="do_create_artigo.php">
+                  <form class="artigo-form" method="post" action="do_edit_users.php">
                   <input type="hidden" name="id" id="edit_artigo_id" value="">
-                    <div>
-                        <label for="titulo">Title:</label>
-                        <input class="form-input" type="text" id="titulo" name="titulo" required><br>
-                    </div>
-                    <div>
-                        <label for="autores">Authors:</label>
-                        <input class="form-input" type="text" id="autores" name="autores" required><br>
-                    </div>
-                    <div>
-                        <label for="descricao">Description:</label>
-                        <textarea class="form-input" id="descricao" name="descricao" required></textarea><br>
-                    </div>
+                  <select name="userType">
+                    <?php
+                    $userTypeQuery = "SELECT DISTINCT type FROM users";
+                    $userTypeResult = $db->query($userTypeQuery);
+
+                    while ($userTypeRow = $userTypeResult->fetch_assoc()) {
+                 echo "<option value='" . $userTypeRow["type"] . "'>" . $userTypeRow["type"] . "</option>";
+                    }
+                ?>
+</select>
                       <input class="submit-btn" type="submit" value="Submit">
                   </form>
               </div>

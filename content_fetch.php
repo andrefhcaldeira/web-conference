@@ -19,6 +19,3 @@ if ($result) {
     // Handle any errors if the query fails
     echo '<p class="description">Error fetching text from the database.</p>';
 }
-
-// Do not close the database connection here
-?>
