@@ -40,24 +40,22 @@
 <h2 class="questions-h2">Questions</h2>
 <hr>
 <div class="questions">
-<?php
-    // TODO CHECK DE UTILIZADOR
-    echo "
-        <p class='question-login'>Login to submit a question</p>
-    ";
-    // TODO SE HOUVER UTILIZADOR
-    echo "
-        <textarea class='question-input' name='question'></textarea>
-    ";
-    // TODO SE HOUVER PERGUNTAS
+    <form class='question-box' method='post' action='do_create_question.php'>
+        <textarea class='question-input' name='text' required></textarea><br>
+        <!-- <input type="hidden" name="id" id="question_id" value=""> -->
+        <input class='submit-btn' type='submit' value='Submit'>
+    </form>
+    <?php
     echo "
         <div class='question'>
             <p class='question-text'>
                 Hello do you know how long the author took to write this?
             </p>
         </div>
-    ";
-?>
+        ";
+    ?>
 </div>
-
+<!-- <script>
+    document.getElementById("question_id").value = $_SESSION['iduser'];
+</script> -->
 <?php include("inc/bot.inc.php"); ?>
