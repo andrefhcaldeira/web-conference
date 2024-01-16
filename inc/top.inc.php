@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <? include "inc/check-user.inc.php"; ?>
     <nav>
         <div class="nav-container">
             <a href="./index.php">
@@ -20,7 +19,6 @@
             <a href="location.php">Local</a>
             <a href="articles.php">Artigos</a>
             <?php
-
             switch ($_SESSION['userType']) {
                 case 'admin':
                     echo "<a href='admin_geral.php'>Admin</a>";
