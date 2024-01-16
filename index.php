@@ -21,7 +21,6 @@ include ("inc/autentica.inc.php");
                 FROM horario
                 INNER JOIN track ON horario.idTrack = track.id";
         $result = $db->query($sql);
-
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "
