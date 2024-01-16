@@ -113,8 +113,8 @@ include "inc/top.inc.php";
                 if (isset($_POST["submit"])) {
                     $str = $_POST["search"];
                     $sth = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
-                INNER JOIN artigo ON horario.idArtigo = artigo.id
-                INNER JOIN track ON horario.idTrack = track.id WHERE titulo LIKE '%$str%'";
+                    INNER JOIN artigo ON horario.idArtigo = artigo.id
+                    INNER JOIN track ON horario.idTrack = track.id WHERE titulo LIKE '%$str%'";
                     $result = $db->query($sth);
 
                     if ($result->num_rows > 0) {

@@ -20,6 +20,5 @@ if ($result) {
     echo '<p class="description">Error fetching text from the database.</p>';
 }
 
-// Close the database connection
-$db->close();
+// Do not close the database connection here
 ?>
