@@ -20,6 +20,7 @@
             </a>
             <a href="location.php">Local</a>
             <a href="articles.php">Artigos</a>
+            <a href="horarios.php">Horarios</a>
             <?php
 if (isset($_SESSION['userType'])) {
     switch ($_SESSION['userType']) {
