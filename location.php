@@ -1,7 +1,7 @@
 <?php
-
+include("content_fetch.php");
 include "inc/top.inc.php";
-
+include("inc/config.inc.php");
 
 ?>
 <main>
@@ -15,9 +15,11 @@ include "inc/top.inc.php";
         <div class="local-info">
             <p class="address">
                 <img src="./images/location.png" width="50px"> <br>
-                Avenida da Ciencia, 567 Bairro da Descoberta <br>
-                Cidade do Saber 1234-567
-                Portugal
+                <?php
+                $contentId = 2;
+                $contentText = getContentById($contentId, $db);
+                echo '<p class="description">' . $contentText . '</p>';
+                ?>
             </p>
             <p class="description">
                 Welcome to the central hub of intellectual exchange for ExploraSci.

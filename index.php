@@ -1,6 +1,7 @@
 <?php
 include("inc/autentica.inc.php");
 include "inc/top.inc.php";
+include("content_fetch.php");
 
 ?>
 <main>
@@ -12,7 +13,9 @@ include "inc/top.inc.php";
                 <h1>Web Conference</h1>
                 <span class="current-year">2024</span>
                 <?php
-                include("content_fetch.php");
+                $contentId = 1;
+                $contentText = getContentById($contentId, $db);
+                echo '<p class="description">' . $contentText . '</p>';
                 ?>
             </div>
         </div>
