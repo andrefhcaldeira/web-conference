@@ -8,38 +8,6 @@ if (!isset($_SESSION['user'])) {
 
 ?>
 <script>
-    // const articlesDatabase = [{
-    //         title: "Article 1",
-    //         content: "Lorem ipsum dolor sit amet..."
-    //     },
-    //     {
-    //         title: "Article 2",
-    //         content: "Consectetur adipiscing elit..."
-    //     },
-
-    // ];
-
-    // function searchArticles() {
-    //     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    //     const searchResultsContainer = document.getElementById('searchResults');
-    //     searchResultsContainer.innerHTML = ''; 
-
-    //     const matchingArticles = articlesDatabase.filter(article =>
-    //         article.title.toLowerCase().includes(searchInput) ||
-    //         article.content.toLowerCase().includes(searchInput)
-    //     );
-
-    //     if (matchingArticles.length === 0) {
-    //         searchResultsContainer.innerHTML = '<p>No matching articles found.</p>';
-    //     } else {
-    //         matchingArticles.forEach(article => {
-    //             const articleDiv = document.createElement('div');
-    //             articleDiv.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>`;
-    //             searchResultsContainer.appendChild(articleDiv);
-    //         });
-    //     }
-    // }
-
     function setCookieAndRedirect(articleId) {
         document.cookie = "articleId=" + articleId;
         window.location.href = 'article_page.php';

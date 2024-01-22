@@ -1,23 +1,18 @@
 <?php
-include("inc/config.inc.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include("inc/config.inc.php");
+    $artigoid = trim($_POST['id']);
+    $questionText = $_POST['text'];
+   
+    $stmt = $db->prepare("INSERT INTO pergunta (idArtigo, pergunta) VALUES (?, ?)");
+    $stmt->bind_param("is", $artigoid, $questionText);
+    echo "Debug: idArtigo = " . $artigoid . ", pergunta = " . $questionText;
+    if ($stmt->execute()) {
+        header("Location: article_page.php");
+        exit();
+    } 
 
-// Check if the question details are present in the request
-$userId = $_SESSION['iduser'];
-$text = $_POST['text'];
+    $stmt->close();
+    $db->close();
+} 
 
-echo "Debug: userId=$userId, text=$text"; // Add debugging output to check parameter values
-
-$sql = "INSERT INTO questions (userId, text) VALUES (?, ?)";
-$stmt = $db->prepare($sql);
-$stmt->bind_param("ss", $userId, $text);
-
-if ($stmt->execute()) {
-    // Redirect to the desired location after successful execution
-    header("Location: article_page.php");
-} else {
-    // Handle the case where the execution was not successful
-    print "<br>" . $db->error;
-}
-
-$stmt->close();
-$db->close();

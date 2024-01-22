@@ -2,7 +2,6 @@
 
 
 
-
 <div class="art">
     <?php
     // Include the database configuration file
@@ -16,9 +15,9 @@
         INNER JOIN artigo ON horario.idArtigo = artigo.id
         INNER JOIN track ON horario.idTrack = track.id WHERE horario.id = $articleId";
     $result = $db->query($sql);
+    $artigoIds = $row["artigo_id"];
 
     if ($result->num_rows > 0) {
-        // Output data from each row
         while ($row = $result->fetch_assoc()) {
             echo "
                 <div class='art-container'>
@@ -36,13 +35,15 @@
         echo "<tr><td colspan='4'>No results found</td></tr>";
     }
     ?>
+
 </div>
 <h2 class="questions-h2">Questions</h2>
 <hr>
 <div class="questions">
-    <form class='question-box' method='post' action='do_create_question.php'>
+<form class='question-box' method='post' action='do_create_question.php'>
+<input type='hidden' name='id' value='<?php echo $artigoId; ?>'>
+        
         <textarea class='question-input' name='text' required></textarea><br>
-        <!-- <input type="hidden" name="id" id="question_id" value=""> -->
         <input class='submit-btn' type='submit' value='Submit'>
     </form>
     <?php
@@ -55,7 +56,5 @@
         ";
     ?>
 </div>
-<!-- <script>
-    document.getElementById("question_id").value = $_SESSION['iduser'];
-</script> -->
+
 <?php include("inc/bot.inc.php"); ?>
