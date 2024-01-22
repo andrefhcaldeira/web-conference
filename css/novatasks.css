@@ -413,7 +413,7 @@ hr {
 
 .questions-h2 {
     color: rgb(0, 63, 92);
-    text-transform:none;
+    text-transform: none;
     text-align: center;
     margin: 0;
 }
@@ -424,7 +424,7 @@ hr {
 
 
 .question {
-    background:rgb(0, 63, 92);
+    background: rgb(0, 63, 92);
     color: white;
     text-align: center;
     padding: 1em;
@@ -436,6 +436,53 @@ hr {
     border-radius: 25px;
 }
 
+.horario-container {
+    display: flex;
+    flex-flow: row;
+    text-align: center;
+    justify-content: center;
+    color: white;
+}
+
+.date-container {
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    background: rgb(0, 63, 92);
+    border: 2px solid white;
+    gap: 10px;
+    padding: 2em;
+}
+
+.horario-date {
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.horario-track {
+    font-size: 1.5rem;
+    margin-bottom: .1em;
+    color: salmon;
+}
+
+.horario-sala {
+    position: relative;
+    top: -5px;
+    float: right;
+    color: orange;
+    font-size: 1.5rem;
+}
+
+.date-article-container {
+}
+
+.horario-art {
+
+}
+
+.horario-hora {
+    color: rgb(216, 148, 216);
+}
 
 @media screen and (max-width: 900px) {
 
@@ -448,7 +495,7 @@ hr {
         font-size: 1.5rem;
         height: 100%;
     }
-    
+
     .local-title img {
         position: relative;
         top: -170%;
