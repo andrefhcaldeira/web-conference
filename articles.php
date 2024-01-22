@@ -82,7 +82,6 @@ if (!isset($_SESSION['user'])) {
                 $sql = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
                 INNER JOIN artigo ON horario.idArtigo = artigo.id
                 INNER JOIN track ON horario.idTrack = track.id";
-                // $sql = "SELECT id, titulo, autores, descricao FROM artigo";
                 $result = $db->query($sql);
                 if (isset($_POST["submit"])) {
                     $str = $_POST["search"];
@@ -116,8 +115,6 @@ if (!isset($_SESSION['user'])) {
                             </div>
                           </a>";
                     }
-
-                    // Close the database connection
                     $db->close();
                 } else {
                     echo "<p>No articles found.</p>";
