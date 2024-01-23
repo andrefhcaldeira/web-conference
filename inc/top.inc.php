@@ -25,7 +25,7 @@
 if (isset($_SESSION['userType'])) {
     switch ($_SESSION['userType']) {
         case 'admin':
-            echo "<a href='admin_geral.php'>Admin</a>";
+            echo "<a href='admin_users.php'>Admin</a>";
             echo "<a href='index.php?logout=1'>Logout</a>";
             break;
 

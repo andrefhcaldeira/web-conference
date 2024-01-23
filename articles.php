@@ -1,5 +1,4 @@
 <?php
-
 include("content_fetch.php");
 include "inc/top.inc.php";
 
