@@ -2,7 +2,9 @@
 include("content_fetch.php");
 ?>
 
-
+<script>
+location.reload(true); 
+</script>
 
 <div class="art">
     <?php

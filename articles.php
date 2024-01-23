@@ -80,15 +80,21 @@ if (!isset($_SESSION['user'])) {
             <div id="searchResults">
                 <?php
                 include("inc/config.inc.php");
-                $sql = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
+                $sql = "SELECT DISTINCT artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
+                FROM horario
                 INNER JOIN artigo ON horario.idArtigo = artigo.id
-                INNER JOIN track ON horario.idTrack = track.id";
+                INNER JOIN track ON horario.idTrack = track.id
+                GROUP BY artigo.id";
+        
                 $result = $db->query($sql);
                 if (isset($_POST["submit"])) {
                     $str = $_POST["search"];
-                    $sth = "SELECT horario.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
+                    $sth = "SELECT DISTINCT artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
+                    FROM horario
                     INNER JOIN artigo ON horario.idArtigo = artigo.id
-                    INNER JOIN track ON horario.idTrack = track.id WHERE titulo LIKE '%$str%'";
+                    INNER JOIN track ON horario.idTrack = track.id
+                    WHERE artigo.titulo LIKE '%$str%'
+                    GROUP BY artigo.id";
                     $result = $db->query($sth);
 
                     if ($result->num_rows > 0) {
