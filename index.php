@@ -4,7 +4,7 @@ include "inc/top.inc.php";
 include("content_fetch.php");
 
 ?>
-<main>
+<main id="special">
     <div class="blue-gradient">
         <div class="hero-container">
             <img class="hero-image" src="./images/sky-earth-space-working.jpg" alt="Hero Image">
