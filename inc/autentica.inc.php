@@ -6,13 +6,13 @@ include "inc/config.inc.php";
 if (@$_REQUEST['logout']) {
     unset($_SESSION['user']);
     unset($_SESSION['iduser']);
-    unset($_SESSION['userType']); // Also unset user type on logout
+    unset($_SESSION['userType']); 
 }
 
-if (@$_POST['user'] && @$_POST['pass']) { // Comes from login form
+if (@$_POST['user'] && @$_POST['pass']) { 
 
     $uuser = $db->real_escape_string($_POST['user']);
-    $upass = mypass($_POST['pass']); /// encription of database
+    $upass = mypass($_POST['pass']); 
 
     $sql = "SELECT id, type FROM users WHERE password='$upass' AND username='$uuser'";
     $result = $db->query($sql);
@@ -25,10 +25,10 @@ if (@$_POST['user'] && @$_POST['pass']) { // Comes from login form
         $iduser = $row['id'];
         $userType = $row['type'];
 
-        $_SESSION['user'] = $uuser; // saves user in session
+        $_SESSION['user'] = $uuser; 
         $_SESSION['iduser'] = $iduser;
-        $_SESSION['userType'] = $userType; // saves user type in session
+        $_SESSION['userType'] = $userType; 
     }
-} else if (!isset($_SESSION['user'])) { // doesn't come from form
+} else if (!isset($_SESSION['user'])) { 
     header("Location: login.php");
 }

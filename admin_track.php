@@ -12,15 +12,12 @@ if ($_SESSION['userType'] !== 'admin') {
        .flex-container {
         display: flex;
     }
-
-    /* Content styles */
     .content {
         flex: 1;
-        max-width: 1200px; /* Set your desired max-width */
+        max-width: 1200px;
         
     }
 
-    /* Table styles */
     .content table {
         width: 100%;
         border-collapse: collapse;
@@ -88,7 +85,6 @@ if ($_SESSION['userType'] !== 'admin') {
   
 <body>
 <div class="flex-container">
-    <!-- Include the sidebar -->
     <?php
     $currentPage = 'track';
     include("inc/admin_sidebar.php"); ?>
@@ -122,14 +118,11 @@ if ($_SESSION['userType'] !== 'admin') {
                   </tbody>
               </table>
           </div>
-  
-          <!-- Popup Form for Creating/Edit Artigo -->
+
           <div class="popup-container" id="popup-container">
               <div class="popup">
                   <span class="close-btn" onclick="closePopup()">X</span>
                   <h3>Edit Artigo</h3>
-                  <!-- Include your form here -->
-                  <!-- For simplicity, a basic form is shown below -->
                   <form class="track-form" method="post" action="do_create_track.php">
                   <input type="hidden" name="id" id="edit_track_id" value="">
                     <div>

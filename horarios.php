@@ -24,8 +24,6 @@ include ("inc/autentica.inc.php");
                     "sala" => $row["sala"]
                 );
             }
-
-            // Close the database connection
             $db->close();
 
             foreach ($organizedData as $date => $tracks) {

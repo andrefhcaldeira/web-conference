@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
-
-        /* Sidebar styles */
-        /* Sidebar styles */
         .sidebar {
             text-decoration: none;
             width: 80px;
@@ -17,10 +13,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Align buttons to the top */
+            justify-content: flex-start; 
         }
 
-        /* Sidebar button styles */
         .sidebar button {
             background-color: #555;
             border: none;
@@ -34,15 +29,14 @@
             cursor: pointer;
         }
         .sidebar button.active {
-    background-color: blue; /* Adjust the color as needed */
-    cursor: default; /* Remove pointer cursor */
-    pointer-events: none; /* Disable click events */
+    background-color: blue; 
+    cursor: default; 
+    pointer-events: none; 
 }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
 <div class="sidebar">
 
 

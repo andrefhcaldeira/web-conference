@@ -4,8 +4,6 @@ if (!empty($_POST['id'])) {
     $conteudo_id = $_POST['id'];
     $titulo = $_POST['Title'];
     $textos = $_POST['Text'];;
-
-    // Check if the article with the given id exists
     $checkExistence = $db->prepare("SELECT id FROM conteudo WHERE id = ?");
     $checkExistence->bind_param("i", $conteudo_id);
     $checkExistence->execute();
@@ -34,7 +32,7 @@ if (!empty($_POST['id'])) {
 
         $stmt = $db->prepare($sql);
 
-        $param_types = str_repeat('s', count($params) - 1) . 'i'; // 'sss...i' based on the number of parameters
+        $param_types = str_repeat('s', count($params) - 1) . 'i';
         $stmt->bind_param($param_types, ...$params);
 
         if ($stmt->execute()) {

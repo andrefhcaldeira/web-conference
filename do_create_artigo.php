@@ -1,7 +1,6 @@
 <?php
 include("inc/config.inc.php");
 
-// Check if the artigo ID is present in the request
 if (!empty($_POST['id'])) {
     $artigo_id = $_POST['id'];
     $titulo = $_POST['titulo'];
@@ -32,7 +31,7 @@ if (!empty($_POST['id'])) {
 
     $stmt = $db->prepare($sql);
 
-    $param_types = str_repeat('s', count($params) - 1) . 'i'; // 'sss...i' based on the number of parameters
+    $param_types = str_repeat('s', count($params) - 1) . 'i';
     $stmt->bind_param($param_types, ...$params);
 
 } else {

@@ -16,7 +16,6 @@ if ($artigoResult) {
         $artigoOptions .= "<option value='" . $artigoRow["id"] . "'>" . $artigoRow["titulo"] . "</option>";
     }
 } else {
-    // Handle query error (optional)
     die("Artigo Query Error: " . mysqli_error($db));
 }
 
@@ -30,7 +29,6 @@ if ($trackResult) {
         $trackOptions .= "<option value='" . $trackRow["id"] . "'>" . $trackRow["nome"] . "</option>";
     }
 } else {
-    // Handle query error (optional)
     die("Track Query Error: " . mysqli_error($db));
 }
 ?>
@@ -153,7 +151,6 @@ if ($trackResult) {
               </table>
           </div>
       </div>
-    <!-- Popup Form for Creating/Edit Artigo -->
     <div class="popup-container" id="popup-container">
     <div class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>

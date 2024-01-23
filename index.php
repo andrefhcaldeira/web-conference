@@ -27,7 +27,7 @@ include("content_fetch.php");
         $result = $db->query($sql);
 
         if ($result->num_rows > 0) {
-            $counter = 1; // Initialize a counter variable
+            $counter = 1; 
             while ($row = $result->fetch_assoc()) {
                 echo "
       <div class='track'>
@@ -47,10 +47,9 @@ include("content_fetch.php");
           <hr>
       </div>";
 
-                $counter++; // Increment the counter variable
+                $counter++; 
 
             }
-            // Close the database connection
             $db->close();
         } else {
             echo "<p>No articles found.</p>";

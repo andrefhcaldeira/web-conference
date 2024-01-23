@@ -1,7 +1,7 @@
 <?php
 
 function getUserType($userId) {
-    global $db; // Assuming $db is your database connection
+    global $db;
     $userId = $db->real_escape_string($userId);
     $sql = "SELECT type FROM users WHERE id='$userId'";
     $result = $db->query($sql);
@@ -11,5 +11,5 @@ function getUserType($userId) {
         return $row['type'];
     }
 
-    return 'normal'; // Default to 'normal' if the type is not found
+    return 'normal'; 
 }
