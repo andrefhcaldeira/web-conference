@@ -29,7 +29,7 @@ if (isset($_SESSION['userType'])) {
             echo "<a href='index.php?logout=1'>Logout</a>";
             break;
 
-         case 'admintrack':
+         case 'trackadmin':
             echo "<a href='admin_track.php'>Admin</a>";
             echo "<a href='index.php?logout=1'>Logout</a>";
              break;

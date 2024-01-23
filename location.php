@@ -1,8 +1,8 @@
 <?php
-include("content_fetch.php");
+
 include "inc/top.inc.php";
 include("inc/config.inc.php");
-
+include("content_fetch.php");
 ?>
 <main>
     <div class="local-title">

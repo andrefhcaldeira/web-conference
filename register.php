@@ -1,4 +1,7 @@
-<?php include ("inc/top.inc.php");?>
+<?php include ("inc/top.inc.php");
+include("content_fetch.php");
+
+?>
 	<div class="forms">
 		<span class="form-title">Register</span>
 		<form action='do_register.php' method='post'>

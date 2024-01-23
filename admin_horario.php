@@ -2,6 +2,7 @@
 
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
+include("content_fetch.php");
 
 if ($_SESSION['userType'] !== 'admin') {
     header("Location: home.php");
@@ -145,7 +146,6 @@ if ($trackResult) {
                     
                     </tr>";
 }
-                      $db->close();
                       ?>
                   </tbody>
               </table>

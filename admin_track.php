@@ -2,8 +2,9 @@
 
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
+include("content_fetch.php");
 
-if ($_SESSION['userType'] !== 'admin') {
+if ($_SESSION['userType'] !== 'admin' && $_SESSION['userType'] !== 'trackadmin') {
     header("Location: home.php");
 }
 ?>
@@ -112,8 +113,6 @@ if ($_SESSION['userType'] !== 'admin') {
                                 <button onclick=\"deleteTrack('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
                       }
-  
-                      $db->close();
                       ?>
                   </tbody>
               </table>

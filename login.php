@@ -1,4 +1,6 @@
-<?php include("inc/top.inc.php"); ?>
+<?php include("inc/top.inc.php"); 
+include("content_fetch.php");
+?>
 <main>
 	<div class="forms">
 		<span class="form-title">Login</span>

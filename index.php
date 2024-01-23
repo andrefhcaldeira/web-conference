@@ -50,7 +50,7 @@ include("content_fetch.php");
                 $counter++; 
 
             }
-            $db->close();
+           
         } else {
             echo "<p>No articles found.</p>";
         }

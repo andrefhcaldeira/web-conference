@@ -1,6 +1,4 @@
 <?php
-
-
 function getContentById($id, $db) {
     $sql = "SELECT texto FROM conteudo WHERE id = $id";
     $result = $db->query($sql);

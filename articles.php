@@ -1,4 +1,6 @@
 <?php
+
+include("content_fetch.php");
 include "inc/top.inc.php";
 
 if (!isset($_SESSION['user'])) {
@@ -115,7 +117,7 @@ if (!isset($_SESSION['user'])) {
                             </div>
                           </a>";
                     }
-                    $db->close();
+                   
                 } else {
                     echo "<p>No articles found.</p>";
                 }

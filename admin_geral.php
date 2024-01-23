@@ -2,6 +2,7 @@
 
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
+include("content_fetch.php");
 
 if ($_SESSION['userType'] !== 'admin') {
     header("Location: home.php");
@@ -104,7 +105,6 @@ if ($_SESSION['userType'] !== 'admin') {
                                 <td><button onclick=\"openEditPopup('".$row["id"]."')\">Edit</button></td>
                                 </tr>";
                       }
-                      $db->close();
                       ?>
                   </tbody>
               </table>

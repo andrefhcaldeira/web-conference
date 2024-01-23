@@ -1,7 +1,8 @@
 <?php
-
+include("content_fetch.php");
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
+
 
 if ($_SESSION['userType'] !== 'admin') {
     header("Location: home.php");
@@ -115,8 +116,6 @@ if ($_SESSION['userType'] !== 'admin') {
                                 <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
                       }
-  
-                      $db->close();
                       ?>
                   </tbody>
               </table>

@@ -1,6 +1,7 @@
 <?php
 include "inc/top.inc.php";
 include ("inc/autentica.inc.php");
+include("content_fetch.php");
 ?>
 <main>
     <h1>Horarios</h1>
@@ -24,7 +25,6 @@ include ("inc/autentica.inc.php");
                     "sala" => $row["sala"]
                 );
             }
-            $db->close();
 
             foreach ($organizedData as $date => $tracks) {
                 echo "<div class='date-container'>

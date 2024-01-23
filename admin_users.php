@@ -2,6 +2,7 @@
 
 include "inc/top.inc.php";
 include("inc/autentica.inc.php");
+include("content_fetch.php");
 
 if ($_SESSION['userType'] !== 'admin') {
     header("Location: home.php");
@@ -124,8 +125,6 @@ if ($userTypeResult) {
                                 <button onclick=\"deleteArtigo('" . $row["id"] . "')\">Delete</button></td>
                                 </tr>";
                       }
-  
-                      $db->close();
                       ?>
                   </tbody>
               </table>
@@ -172,7 +171,7 @@ if ($userTypeResult) {
         if (confirm("Are you sure you want to delete this article?")) {
             var form = document.createElement("form");
             form.method = "post";
-            form.action = "do_delete_artigo.php";
+            form.action = "do_delete_users.php";
             var input = document.createElement("input");
             input.type = "hidden";
             input.name = "id";

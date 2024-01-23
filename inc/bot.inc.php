@@ -7,6 +7,7 @@
                 $contentId = 2;
                 $contentText = getContentById($contentId, $db);
                 echo $contentText ;
+                $db->close();
                 ?><br>
         +351 21 234 5678 explorasci@gmail.com</span>
     </div>

@@ -1,4 +1,6 @@
-<?php include("inc/top.inc.php"); ?>
+<?php include("inc/top.inc.php");
+include("content_fetch.php");
+?>
 
 
 
@@ -48,7 +50,6 @@
     } else {
         echo "<p>No questions yet.</p>";
     }
-    $db->close();
     ?>
 
     <form class='question-box' method='post' action='do_create_question.php'>
