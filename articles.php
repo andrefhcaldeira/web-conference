@@ -31,7 +31,7 @@ include "inc/top.inc.php";
                 $result = $db->query($sql);
                 if (isset($_POST["submit"])) {
                     $str = $_POST["search"];
-                    $sth = "SELECT DISTINCThorario.id As horario_id, artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
+                    $sth = "SELECT DISTINCT horario.id As horario_id, artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
                     FROM horario
                     INNER JOIN artigo ON horario.idArtigo = artigo.id
                     INNER JOIN track ON horario.idTrack = track.id
