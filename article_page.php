@@ -1,7 +1,13 @@
 <?php include("inc/top.inc.php");
 include("content_fetch.php");
 ?>
+<style>
+.noticeQuestion{
+  font-weight: bold;
+  color: #ffa600;
+};
 
+</style>
 
 
 <div class="art">
@@ -52,7 +58,7 @@ include("content_fetch.php");
     ?>
 <?php
 if (!isset($_SESSION['user'])) {
-    echo "Please login to submit questions.";
+    echo "<div class='question'><p class='noticeQuestion'><b>Please login to submit questions.</b></p></div>";
 } else {
 ?>
     <form class='question-box' method='post' action='do_create_question.php'>

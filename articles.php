@@ -2,11 +2,6 @@
 include("content_fetch.php");
 include "inc/top.inc.php";
 
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
-    exit();
-}
-
 ?>
 <script>
     function setCookieAndRedirect(articleId) {
@@ -27,7 +22,7 @@ if (!isset($_SESSION['user'])) {
             <div id="searchResults">
                 <?php
                 include("inc/config.inc.php");
-                $sql = "SELECT DISTINCT artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
+                $sql = "SELECT DISTINCT horario.id As horario_id, artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
                 FROM horario
                 INNER JOIN artigo ON horario.idArtigo = artigo.id
                 INNER JOIN track ON horario.idTrack = track.id
@@ -36,7 +31,7 @@ if (!isset($_SESSION['user'])) {
                 $result = $db->query($sql);
                 if (isset($_POST["submit"])) {
                     $str = $_POST["search"];
-                    $sth = "SELECT DISTINCT artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
+                    $sth = "SELECT DISTINCThorario.id As horario_id, artigo.id, artigo.titulo AS artigo_name, artigo.autores AS artigo_autor, horario.sala, horario.`data` 
                     FROM horario
                     INNER JOIN artigo ON horario.idArtigo = artigo.id
                     INNER JOIN track ON horario.idTrack = track.id
@@ -46,7 +41,7 @@ if (!isset($_SESSION['user'])) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
+                            echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["horario_id"] . ")'>
                             <div class='article-container'>
                                 <span class='article-title'>" . $row["artigo_name"] . "</span>
                                 <span class='article-author'>" .  $row["artigo_autor"] . "</span>
@@ -61,7 +56,7 @@ if (!isset($_SESSION['user'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["id"] . ")'>
+                        echo "<a href='article_page.php' id='articleAnchor' onclick='setCookieAndRedirect(" . $row["horario_id"] . ")'>
                             <div class='article-container'>
                                 <span class='article-title'>" . $row["artigo_name"] . "</span>
                                 <span class='article-author'>" .  $row["artigo_autor"] . "</span>
