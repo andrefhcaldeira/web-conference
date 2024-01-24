@@ -1,17 +1,20 @@
 <?php include("inc/top.inc.php");
 include("content_fetch.php");
 ?>
+<style>
+.noticeQuestion{
+  font-weight: bold;
+  color: #ffa600;
+};
 
-<script>
-location.reload(true); 
-</script>
+</style>
+
 
 <div class="art">
     <?php
     include("inc/config.inc.php");
 
     $articleId = isset($_COOKIE['articleId']) ? $_COOKIE['articleId'] : null;
-
     $sql = "SELECT horario.id, horario.idArtigo, artigo.titulo AS artigo_name, artigo.descricao AS artigo_descricao, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
         INNER JOIN artigo ON horario.idArtigo = artigo.id
         INNER JOIN track ON horario.idTrack = track.id WHERE horario.id = $articleId";
@@ -53,13 +56,18 @@ location.reload(true);
         echo "<p>No questions yet.</p>";
     }
     ?>
-
+<?php
+if (!isset($_SESSION['user'])) {
+    echo "<div class='question'><p class='noticeQuestion'><b>Please login to submit questions.</b></p></div>";
+} else {
+?>
     <form class='question-box' method='post' action='do_create_question.php'>
         <input type='hidden' name='id' value='<?php echo $idArtigo; ?>'>
         <textarea class='question-input' name='text' required></textarea><br>
         <input class='submit-btn' type='submit' value='Submit'>
     </form>
-</div>
-
+<?php
+}
+?>
 
 <?php include("inc/bot.inc.php"); ?>

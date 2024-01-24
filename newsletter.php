@@ -3,10 +3,7 @@ include("content_fetch.php");
 include "inc/top.inc.php";
 include "inc/config.inc.php";
 
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
-    exit();
-}
+
 ?>
 <style>
     .form-container {
@@ -72,20 +69,15 @@ if (!isset($_SESSION['user'])) {
             $sql = "INSERT INTO mails (first, last, mail, phone) VALUES (?, ?, ?, ?)";
             $stmt = $db->prepare($sql);
 
-            // Bind parameters
             $stmt->bind_param("ssss", $first, $last, $email, $phone);
 
-            // Execute the statement
             if ($stmt->execute()) {
                 echo "Thank you! Your information has been collected.";
             } else {
                 echo "Error: " . $stmt->error;
             }
 
-            // Close the statement and database connection
-        } else {
-            echo "Invalid request method.";
-        }
+        } 
         ?>
 
 </main>

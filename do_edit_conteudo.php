@@ -12,7 +12,6 @@ if (!empty($_POST['id'])) {
     if ($checkExistence->num_rows > 0) {
         $checkExistence->close();
 
-        // Perform the update
         $sql = "UPDATE conteudo SET";
         $params = array();
 

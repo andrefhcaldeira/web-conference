@@ -1,7 +1,8 @@
 <?php
-include("inc/autentica.inc.php");
+include("inc/config.inc.php");
 include "inc/top.inc.php";
 include("content_fetch.php");
+include("inc/autentica.inc.php");
 
 ?>
 <main id="special">
@@ -26,11 +27,11 @@ include("content_fetch.php");
         $result = $db->query($sql);
 
         if ($result->num_rows > 0) {
-            $uniqueTracks = array(); // Array to store unique track names
+            $counter = 1; 
+            $uniqueTracks = array(); 
             while ($row = $result->fetch_assoc()) {
                 $trackName = $row["track_nome"];
 
-                // Check if track has already been displayed
                 if (!in_array($trackName, $uniqueTracks)) {
                     echo "
                     <div class='track'>
@@ -50,7 +51,8 @@ include("content_fetch.php");
                         <hr>
                     </div>";
 
-                    $uniqueTracks[] = $trackName; // Add track to the unique tracks array
+                    $uniqueTracks[] = $trackName; 
+                    $counter++;
                 }
             }
         } else {
