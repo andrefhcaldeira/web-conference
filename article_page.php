@@ -2,16 +2,13 @@
 include("content_fetch.php");
 ?>
 
-<script>
-location.reload(true); 
-</script>
+
 
 <div class="art">
     <?php
     include("inc/config.inc.php");
 
     $articleId = isset($_COOKIE['articleId']) ? $_COOKIE['articleId'] : null;
-
     $sql = "SELECT horario.id, horario.idArtigo, artigo.titulo AS artigo_name, artigo.descricao AS artigo_descricao, artigo.autores AS artigo_autor, horario.sala, horario.`data` FROM horario
         INNER JOIN artigo ON horario.idArtigo = artigo.id
         INNER JOIN track ON horario.idTrack = track.id WHERE horario.id = $articleId";
