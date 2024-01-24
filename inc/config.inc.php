@@ -1,5 +1,5 @@
 <?php
-$db = new mysqli('localhost', 'root', '', 'conferencedb') or die("Não ligou");
+$db = new mysqli('localhost', 'root', '', 'web-conference') or die("Não ligou");
 
 if (!function_exists('mypass')) {
     function mypass($pass){

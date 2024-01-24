@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2024 at 07:46 PM
+-- Generation Time: Jan 24, 2024 at 05:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `conferencedb`
+-- Database: `web-conference`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,11 @@ CREATE TABLE `artigo` (
 --
 
 INSERT INTO `artigo` (`id`, `titulo`, `autores`, `descricao`) VALUES
-(22, 'ddd', 'dd', 'rrrrrr');
+(25, 'Dancing with Quarks: Navigating the Subatomic Realm', 'Dr. Elena Rodriguez, Particle Physicist', 'Delve into the intricate world of particle physics with Dr. Elena Rodriguez as she explores the fascinating dance of quarks, providing insights into the fundamental building blocks of the universe and the cutting-edge discoveries shaping our understanding.'),
+(28, 'Genomic Revolution: A Journey into the Human Blueprint', 'Prof. Jonathan Chen, Genomics Researcher', 'Embark on a genomic odyssey guided by Prof. Jonathan Chen, as he unveils the latest breakthroughs in deciphering the human genome. Gain a deeper appreciation for the transformative impact of genomics on medicine, genetics, and personalized healthcare.'),
+(29, 'Mind Matters: Unraveling the Intricacies of Neural Connectivity', 'Dr. Sarah Williams, Neuroscientist', 'Join Dr. Sarah Williams on a captivating exploration of neural networks and the complexities of the human mind. From synaptic connections to cognitive functions, this article provides a comprehensive view of the latest advancements in neuroscience.'),
+(30, 'Exoplanets and Extraterrestrial Life: Beyond Our Cosmic Borders', 'Prof. Alexander Patel, Astrobiologist', 'Prof. Alexander Patel invites you to peer beyond Earth\'s atmosphere as he investigates exoplanets and the potential for extraterrestrial life. This article unravels the mysteries of distant worlds and the ongoing quest to discover signs of life beyond our solar system.'),
+(31, 'Greentech Renaissance: Innovations Shaping a Sustainable Future', 'Dr. Mia Thompson, Environmental Scientist', 'Dr. Mia Thompson presents a compelling narrative on the forefront of environmental science. Explore groundbreaking innovations in greentech that promise to revolutionize our approach to sustainability, offering solutions to address the pressing challenges of a changing planet.');
 
 -- --------------------------------------------------------
 
@@ -58,8 +62,8 @@ CREATE TABLE `conteudo` (
 --
 
 INSERT INTO `conteudo` (`id`, `titulo`, `texto`) VALUES
-(1, 'Home bio', 'yourself in a dynamic program featuring expert-led sessions, interactive workshops, and thought-provoking discussions. Explore the latest advancements and contribute to the collective knowledge that propels our understanding of Science.'),
-(2, 'Local', 'eerrtrrtt'),
+(1, 'Home bio', 'Immerse yourself in a dynamic program featuring expert-led sessions, interactive workshops, and thought-provoking discussions. Explore the latest advancements and contribute to the collective knowledge that propels our understanding of Science.'),
+(2, 'Local', 'Avenida da Ciência,567 Bairro da Descoberta, Cidade do Saber 1234-567, Portugal'),
 (3, 'Outras Informacoes', 'rrrrrr');
 
 -- --------------------------------------------------------
@@ -82,7 +86,36 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id`, `idArtigo`, `idTrack`, `sala`, `data`, `hora`) VALUES
-(1, 22, 1, 'A', '2024-01-01', '16:25:19');
+(6, 25, 4, 'A', '2024-02-12', '10:00:00'),
+(7, 28, 5, 'B', '2024-02-12', '13:00:00'),
+(8, 29, 6, 'A', '2024-02-13', '10:00:00'),
+(9, 30, 7, 'B', '2024-02-13', '13:00:00'),
+(10, 31, 8, 'A', '2024-02-14', '10:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mails`
+--
+
+CREATE TABLE `mails` (
+  `id` int(11) NOT NULL,
+  `first` varchar(50) NOT NULL,
+  `last` varchar(50) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `phone` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `mails`
+--
+
+INSERT INTO `mails` (`id`, `first`, `last`, `mail`, `phone`) VALUES
+(1, '123', '123', '123@gmail.com', 123),
+(2, 'dfghiuhdfg', 'poiudsfegjdrj', 'jefwoigods@gmail.com', 123456789),
+(3, 'dfghiuhdfg', 'poiudsfegjdrj', 'jefwoigods@gmail.com', 123456789),
+(4, 'fbdug', 'ijfndfgf', 'diogomartim@gmail.com', 123456789),
+(5, 'edfio[jgpoifd[kgpofds', 'ofgdofifgp', 'asbdsfos@gmasil.com', 123456789);
 
 -- --------------------------------------------------------
 
@@ -126,7 +159,11 @@ CREATE TABLE `track` (
 --
 
 INSERT INTO `track` (`id`, `nome`, `texto`) VALUES
-(1, 'yes', 'yes');
+(4, 'Quantum Horizons', 'Exploring the Frontiers of Particle Physics'),
+(5, 'Genomic Odyssey', 'Unraveling the Code of Life'),
+(6, 'Synaptic Symposium', 'Decoding the Complexity of Neural Networks'),
+(7, 'Beyond Earth', 'Astrobiology and the Search for Extraterrestrial Life'),
+(8, 'Innovations in Green Tech', 'Sustainable Solutions for a Changing Planet');
 
 -- --------------------------------------------------------
 
@@ -149,7 +186,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`) VALUES
 (3, 'www', '0740d7491669795fa4ee0f6df7c34008', 'cool@gmail.com', ''),
 (4, 'ww', '0740d7491669795fa4ee0f6df7c34008', 'gon@gmail.com', ''),
-(5, '123', '0740d7491669795fa4ee0f6df7c34008', 'teste@gmail.com', 'admin');
+(5, '123', '0740d7491669795fa4ee0f6df7c34008', 'teste@gmail.com', 'admin'),
+(6, 'util', '223a5fb31b5f4714d2f2bbae82f9e41c', 'testee@gmail.com', 'normal');
 
 --
 -- Indexes for dumped tables
@@ -174,6 +212,12 @@ ALTER TABLE `horario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idArtigo` (`idArtigo`,`idTrack`),
   ADD KEY `idTrack` (`idTrack`);
+
+--
+-- Indexes for table `mails`
+--
+ALTER TABLE `mails`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pergunta`
@@ -202,7 +246,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `artigo`
 --
 ALTER TABLE `artigo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `conteudo`
@@ -214,25 +258,31 @@ ALTER TABLE `conteudo`
 -- AUTO_INCREMENT for table `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `mails`
+--
+ALTER TABLE `mails`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pergunta`
 --
 ALTER TABLE `pergunta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
