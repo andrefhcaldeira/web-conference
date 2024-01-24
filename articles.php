@@ -16,59 +16,6 @@ if (!isset($_SESSION['user'])) {
 </script>
 <main>
     <div class="articles-wrapper">
-        <div class="filters">
-            <span class="filters-title">Filters</span> <br>
-            <span class="tracks-title">Tracks:</span>
-            <div class="article-tracks">
-                <form>
-                    <label>
-                        <input type="radio" name="tracks" value="1">
-                        1
-                    </label>
-                    <label>
-                        <input type="radio" name="tracks" value="2">
-                        2
-                    </label>
-                    <label>
-                        <input type="radio" name="tracks" value="3">
-                        3
-                    </label>
-                    <label>
-                        <input type="radio" name="tracks" value="4">
-                        4
-                    </label>
-                    <label>
-                        <input type="radio" name="tracks" value="5">
-                        5
-                    </label>
-                </form>
-            </div>
-            <span class="date-tile">Publication Date:</span>
-            <div class="dates">
-                <form class="dates-flex">
-                    <label>
-                        <input type="radio" name="dates" value="1">
-                        <span>Last Week ()</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="dates" value="2">
-                        <span>Last Month ()</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="dates" value="3">
-                        <span>Last 3 Months ()</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="dates" value="4">
-                        <span>Last 6 Months ()</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="dates" value="5">
-                        <span>Last Year ()</span>
-                    </label>
-                </form>
-            </div>
-        </div>
         <div class="articles">
             <div>
                 <h1 class="articles-h1">Articles</h1>

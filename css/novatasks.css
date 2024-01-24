@@ -12,6 +12,10 @@ main {
     height: 100%;
 }
 
+#special {
+    height: auto;
+}
+
 footer {
     position: relative;
     bottom: 0;

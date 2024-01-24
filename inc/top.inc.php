@@ -1,5 +1,5 @@
 <?php
- if (session_id() == "") session_start(); 
+if (session_id() == "") session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,29 +21,30 @@
             <a href="location.php">Local</a>
             <a href="articles.php">Artigos</a>
             <a href="horarios.php">Horarios</a>
+            <a href="newsletter.php">Newsletter</a>
             <?php
-if (isset($_SESSION['userType'])) {
-    switch ($_SESSION['userType']) {
-        case 'admin':
-            echo "<a href='admin_users.php'>Admin</a>";
-            echo "<a href='index.php?logout=1'>Logout</a>";
-            break;
+            if (isset($_SESSION['userType'])) {
+                switch ($_SESSION['userType']) {
+                    case 'admin':
+                        echo "<a href='admin_users.php'>Admin</a>";
+                        echo "<a href='index.php?logout=1'>Logout</a>";
+                        break;
 
-         case 'trackadmin':
-            echo "<a href='admin_track.php'>Admin</a>";
-            echo "<a href='index.php?logout=1'>Logout</a>";
-             break;
-        case 'normal':
-            echo "<a href='index.php?logout=1'>Logout</a>";
-            break;
-        default:
-            echo "<a href='login.php'>Login</a>";
-            break;
-    }
-} else {
-    echo "<a href='login.php'>Login</a>";
-}
-?>
+                    case 'trackadmin':
+                        echo "<a href='admin_track.php'>Admin</a>";
+                        echo "<a href='index.php?logout=1'>Logout</a>";
+                        break;
+                    case 'normal':
+                        echo "<a href='index.php?logout=1'>Logout</a>";
+                        break;
+                    default:
+                        echo "<a href='login.php'>Login</a>";
+                        break;
+                }
+            } else {
+                echo "<a href='login.php'>Login</a>";
+            }
+            ?>
 
         </div>
     </nav>
