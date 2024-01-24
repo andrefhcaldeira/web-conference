@@ -44,6 +44,7 @@ if (session_id() == "") session_start();
             } else {
                 echo "<a href='login.php'>Login</a>";
             }
+
             ?>
 
         </div>

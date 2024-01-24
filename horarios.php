@@ -1,6 +1,5 @@
 <?php
 include "inc/top.inc.php";
-include ("inc/autentica.inc.php");
 include("content_fetch.php");
 ?>
 <main>

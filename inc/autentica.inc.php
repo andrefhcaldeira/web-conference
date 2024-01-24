@@ -7,6 +7,7 @@ if (@$_REQUEST['logout']) {
     unset($_SESSION['user']);
     unset($_SESSION['iduser']);
     unset($_SESSION['userType']); 
+    header("Location: index.php");
 }
 
 if (@$_POST['user'] && @$_POST['pass']) { 
@@ -29,6 +30,5 @@ if (@$_POST['user'] && @$_POST['pass']) {
         $_SESSION['iduser'] = $iduser;
         $_SESSION['userType'] = $userType; 
     }
-} else if (!isset($_SESSION['user'])) { 
-    header("Location: login.php");
-}
+    header("Location: index.php");
+} 

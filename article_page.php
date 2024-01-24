@@ -50,13 +50,18 @@ include("content_fetch.php");
         echo "<p>No questions yet.</p>";
     }
     ?>
-
+<?php
+if (!isset($_SESSION['user'])) {
+    echo "Please login to submit questions.";
+} else {
+?>
     <form class='question-box' method='post' action='do_create_question.php'>
         <input type='hidden' name='id' value='<?php echo $idArtigo; ?>'>
         <textarea class='question-input' name='text' required></textarea><br>
         <input class='submit-btn' type='submit' value='Submit'>
     </form>
-</div>
-
+<?php
+}
+?>
 
 <?php include("inc/bot.inc.php"); ?>
