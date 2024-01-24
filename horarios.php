@@ -3,7 +3,8 @@ include "inc/top.inc.php";
 include("content_fetch.php");
 ?>
 <main>
-    <h1>Horarios</h1>
+    <div>
+   <center> <h1>Horarios</h1></center>
     <div class='horario-container'>
     <?php
         include("inc/config.inc.php");
@@ -46,6 +47,7 @@ include("content_fetch.php");
             echo "<p>No articles found.</p>";
         }
     ?>
+    </div>
     </div>
 </main>
 <?php
